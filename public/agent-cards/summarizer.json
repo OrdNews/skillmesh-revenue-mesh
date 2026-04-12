@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Summarizer",
+  "version": "0.1.0",
+  "role": "worker",
+  "skill": "summarization",
+  "wallet": "0xb12d...3a44",
+  "network": "xlayer",
+  "pricing": {
+    "model": "pay-per-call",
+    "usdPerCall": 0.005
+  },
+  "service": {
+    "protocol": "x402",
+    "endpoint": "/workers/summarizer",
+    "paymentAsset": "USDT"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Compresses long inputs into short outputs designed for README and demo delivery."
+  }
+}

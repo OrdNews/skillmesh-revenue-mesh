@@ -1,0 +1,118 @@
+{
+  "network": "X Layer",
+  "fundedAt": "2026-04-12",
+  "source": {
+    "role": "Orchestrator",
+    "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+    "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+  },
+  "transfers": [
+    {
+      "role": "Scout",
+      "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+      "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.01"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "1",
+          "txHash": "0xab15ba3c898c639025fa1d4001836ddd1ef4e0ef6dcb23b16a4e3ae47e31d312"
+        }
+      ]
+    },
+    {
+      "role": "Trader",
+      "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+      "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.02"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "5",
+          "txHash": "0xd9fbab018e8c16980e583e0fd3594ec7246da50d04f884bf5a025a35292098b6"
+        }
+      ]
+    },
+    {
+      "role": "Treasury",
+      "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+      "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.01",
+          "txHash": "0x2f62aa54ead00b11cf4f9115a5e7a04643d55b7838a6cc7c19d5ebdf5e0e3561"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "1",
+          "txHash": "0xfaf167077aa77786038bee60f80cdf399d0f3ccf9a434ebb626a4bc0f735bacb"
+        }
+      ]
+    }
+  ],
+  "postFundingBalances": [
+    {
+      "role": "Orchestrator",
+      "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.16"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "9.831875"
+        }
+      ]
+    },
+    {
+      "role": "Scout",
+      "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.01"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "role": "Trader",
+      "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.02"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "5"
+        }
+      ]
+    },
+    {
+      "role": "Treasury",
+      "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "assets": [
+        {
+          "symbol": "OKB",
+          "amount": "0.01"
+        },
+        {
+          "symbol": "USDT",
+          "amount": "1"
+        }
+      ]
+    }
+  ]
+}

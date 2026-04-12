@@ -1,0 +1,1633 @@
+{
+  "project": "SkillMesh Revenue Mesh",
+  "mode": "prototype",
+  "exportedAt": "2026-04-12T06:25:54.241Z",
+  "taskId": "6e409715-4a6b-4c31-8cd0-87c8888ac54c",
+  "input": "Scout a treasury opportunity, route capital, then summarize the operating thesis for judges.",
+  "status": "completed",
+  "createdAt": "2026-04-12T06:25:48.270Z",
+  "completedAt": "2026-04-12T06:25:54.239Z",
+  "proofTaskHash": "0x87da8cff5667c0b7db06d2edf8f7fcdb58c75e868c0d429ef3ffc26ecc701bda",
+  "orchestrator": {
+    "id": "orchestrator",
+    "name": "Orchestrator",
+    "role": "Command router",
+    "skill": "workflow-planning",
+    "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+    "wallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+    "price": null,
+    "balance": 23.205,
+    "accent": "ember",
+    "metadataPath": "/agent-cards/orchestrator.json",
+    "endpoint": "/workers/orchestrator",
+    "metadataUrl": "/agent-cards/orchestrator.json",
+    "cardApiUrl": "/api/agents/orchestrator/card",
+    "pricingLabel": "Internal"
+  },
+  "workers": [
+    {
+      "id": "scout",
+      "name": "Scout",
+      "role": "Market scouting",
+      "skill": "okx-market-intel",
+      "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+      "wallet": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "price": null,
+      "balance": 1.84,
+      "accent": "sky",
+      "metadataPath": "/agent-cards/scout.json",
+      "endpoint": "/workers/scout",
+      "metadataUrl": "/agent-cards/scout.json",
+      "cardApiUrl": "/api/agents/scout/card",
+      "pricingLabel": "Internal"
+    },
+    {
+      "id": "trader",
+      "name": "Trader",
+      "role": "Route execution",
+      "skill": "uniswap-route-planning",
+      "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+      "wallet": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "price": null,
+      "balance": 6.68,
+      "accent": "rose",
+      "metadataPath": "/agent-cards/trader.json",
+      "endpoint": "/workers/trader",
+      "metadataUrl": "/agent-cards/trader.json",
+      "cardApiUrl": "/api/agents/trader/card",
+      "pricingLabel": "Internal"
+    },
+    {
+      "id": "summarizer",
+      "name": "Summarizer",
+      "role": "Paid worker",
+      "skill": "summarization",
+      "wallet": "0xb12d...3a44",
+      "price": 0.005,
+      "balance": 2.165,
+      "accent": "gold",
+      "metadataPath": "/agent-cards/summarizer.json",
+      "endpoint": "/workers/summarizer",
+      "metadataUrl": "/agent-cards/summarizer.json",
+      "cardApiUrl": "/api/agents/summarizer/card",
+      "pricingLabel": "$0.005 USDT"
+    }
+  ],
+  "plan": [
+    "Normalize user intent from: \"Scout a treasury opportunity, route capital, then summarize the operating thesis for judges.\"",
+    "Scout market context with OKX capabilities before any treasury spend decisions.",
+    "Plan the execution lane: Scout -> Trader -> Summarizer.",
+    "Use Trader to compare route candidates and prepare a swap-friendly path that can strengthen or preserve the operating budget.",
+    "Spend the organization treasury on specialist workers over x402, then write proof artifacts to X Layer."
+  ],
+  "strategy": {
+    "headline": "Scout the market, route treasury capital, strengthen the operating budget, then hire specialist agents.",
+    "objective": "Scout a treasury opportunity, route capital, then summarize the operating thesis for judges.",
+    "executionLane": "Scout -> Trader -> Summarizer",
+    "paymentPolicy": "Deploy treasury budget into 1 specialist worker call over x402.",
+    "routePolicy": "Trader compares OKX trade context with Uniswap AI routing before any treasury deployment.",
+    "budgetPolicy": "Only spend treasury budget after Scout and Trader produce enough context to justify the purchase.",
+    "treasuryLoop": "Scout -> Route -> Fund -> Hire -> Prove",
+    "proofPolicy": "Treasury records why budget was spent, who was hired, and what proof artifact was produced on X Layer.",
+    "protocols": [
+      "OKX Market",
+      "OKX Trade",
+      "Uniswap AI",
+      "x402",
+      "X Layer"
+    ]
+  },
+  "stack": [
+    {
+      "id": "okx-market",
+      "label": "OKX Market Intelligence",
+      "owner": "Scout",
+      "status": "primed",
+      "summary": "Token discovery, price snapshots, and wallet-aware market context."
+    },
+    {
+      "id": "okx-trade",
+      "label": "OKX Trade Execution",
+      "owner": "Trader",
+      "status": "primed",
+      "summary": "Supported chains, quotes, approvals, and swap construction."
+    },
+    {
+      "id": "uniswap-ai",
+      "label": "Uniswap AI Routing",
+      "owner": "Trader",
+      "status": "design-ready",
+      "summary": "Pathfinding, pay-with-any-token, and execution strategy composition."
+    },
+    {
+      "id": "x402",
+      "label": "x402 Settlement Rail",
+      "owner": "Workers",
+      "status": "primed",
+      "summary": "Per-call service settlement between agents in USDC."
+    },
+    {
+      "id": "xlayer",
+      "label": "X Layer Proof Layer",
+      "owner": "Treasury",
+      "status": "partial",
+      "summary": "Completion records, receipt minting, and proof-linked evidence."
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "service-funding",
+      "title": "Self-Funding Loop",
+      "status": "focus",
+      "route": "Scout opportunity -> route treasury capital -> hire specialists -> keep the swarm funded",
+      "thesis": "Turn treasury assets into operating budget, then spend that budget on specialist intelligence."
+    },
+    {
+      "id": "alpha-lane",
+      "title": "Treasury Expansion Lane",
+      "status": "focus",
+      "route": "OKX market read -> route comparison -> swap-ready execution",
+      "thesis": "Let Scout and Trader convert raw market context into a capital move the organization can justify."
+    },
+    {
+      "id": "proof-lane",
+      "title": "Operational Proof Lane",
+      "status": "focus",
+      "route": "budget spend -> x402 settlement -> registry write -> receipt artifact",
+      "thesis": "Every treasury decision should end in a tx hash, receipt, or exportable proof artifact."
+    }
+  ],
+  "liveSpendRequested": false,
+  "liveSpendTargetId": null,
+  "steps": [
+    {
+      "id": "61b0dbe4-543b-4e9e-bf92-8e49edc8907e",
+      "timestamp": "2026-04-12T06:25:49.124Z",
+      "status": "done",
+      "type": "orchestrator",
+      "title": "Mission accepted by Orchestrator",
+      "detail": "Natural-language request ingested and queued as a treasury-aware execution mission."
+    },
+    {
+      "id": "1aae1766-0ef9-4139-a674-e368c45c3dd7",
+      "timestamp": "2026-04-12T06:25:49.975Z",
+      "status": "done",
+      "type": "market",
+      "title": "Scout attached OKX market context",
+      "detail": "Live treasury wallet 0x90ec52fe001a5b59b356eb55ffb6931b7c37db26 currently holds 0.16 OKB, 9.806875 USDT. Evidence id: 0x545e1d4a30..."
+    },
+    {
+      "id": "8deeb665-7a14-43ac-a0fc-6e598f188f45",
+      "timestamp": "2026-04-12T06:25:50.827Z",
+      "status": "done",
+      "type": "route",
+      "title": "Trader prepared the execution route",
+      "detail": "Fetched a live X Layer quote through Uniswap V4. Price impact 0.08%. The route is ready to support the organization budget loop. Route id: 0xa7e92ccbc7..."
+    },
+    {
+      "id": "0b03d6cc-1e43-41b3-a4e5-0e7bc6b328cb",
+      "timestamp": "2026-04-12T06:25:51.679Z",
+      "status": "done",
+      "type": "swap",
+      "title": "Swap-ready payload prepared",
+      "detail": "The execution lane now has a live quote for 5 USDT -> 0.059739178124238518 OKB, ready for the final signed treasury deployment step."
+    },
+    {
+      "id": "fbdf1a77-518f-4507-8695-48b5f2018e24",
+      "timestamp": "2026-04-12T06:25:52.533Z",
+      "status": "done",
+      "type": "worker",
+      "title": "Summarizer finished execution",
+      "detail": "Spent $0.005 USDT from treasury over x402 and received a summarization payload back into the organization."
+    },
+    {
+      "id": "cbd03c67-6d14-4e0b-a97d-3edb552f725e",
+      "timestamp": "2026-04-12T06:25:53.387Z",
+      "status": "done",
+      "type": "treasury",
+      "title": "Treasury recorded task completion",
+      "detail": "Recorded why treasury budget was deployed, which agents were hired, and what proof path the organization produced."
+    }
+  ],
+  "transactions": [
+    {
+      "id": "fc7601e8-e31a-4437-be17-9e198112bdd2",
+      "hash": "0xc8378613f232dbc7f4a204c7e3d0b4cc0b72be9b2c092235b4b4ec92f4a4a924",
+      "timestamp": "2026-04-12T06:25:54.239Z",
+      "network": "X Layer",
+      "linkLabel": "mock explorer",
+      "mock": true,
+      "type": "receipt",
+      "label": "SkillMeshReceipt.mintReceipt",
+      "amount": "receipt minted",
+      "from": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "to": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "explorerUrl": "https://www.oklink.com/xlayer/tx/0x357cf9f19e3f76f6b85a750656426a2a03603a2109e7fc38dcb0f1d44b32587b"
+    },
+    {
+      "id": "54560bc1-b3eb-4ad7-af7b-4f8962d3ad8b",
+      "hash": "0x0bc03428dd3881f2a653425c1fce09618b9c514d9cbb37d76a23543cbf70bea3",
+      "timestamp": "2026-04-12T06:25:53.387Z",
+      "network": "X Layer",
+      "linkLabel": "mock explorer",
+      "mock": true,
+      "type": "contract",
+      "label": "SkillMeshRegistry.recordTaskCompletion",
+      "amount": "proof event",
+      "from": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "to": "SkillMeshRegistry",
+      "explorerUrl": "https://www.oklink.com/xlayer/tx/0x8259eb89227cd8f38317126f3dfcb88ee27a179e6791bd8e70626e6d8eff269e"
+    },
+    {
+      "id": "fb52ab48-5718-443a-8311-1e8462f73b29",
+      "hash": "0x7f7e3c190b6e291b7fcfcb2bb20b96b28a0585d225397c2f0d1ea5ca3b61f16d",
+      "timestamp": "2026-04-12T06:25:52.533Z",
+      "network": "X Layer",
+      "linkLabel": "mock explorer",
+      "mock": true,
+      "type": "payment",
+      "label": "Summarizer x402 settlement",
+      "amount": "$0.005 USDT",
+      "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "to": "0xb12d...3a44",
+      "explorerUrl": "https://www.oklink.com/xlayer/tx/0xbfb022bc7cb81605f898146ef591a6ff400c1f62b8777c637445ad2c1178cc8f"
+    },
+    {
+      "id": "4e6b9fa9-9228-4f9e-9cbd-91ecd013b0be",
+      "hash": "0x841423f2d4a3e24eaf5bda2f0e0f51d318a6aa765dd7e5bdc18946062ccfaeac",
+      "timestamp": "2026-04-12T06:25:51.679Z",
+      "network": "X Layer",
+      "linkLabel": "mock explorer",
+      "mock": true,
+      "type": "swap",
+      "label": "Trader staged swap execution",
+      "amount": "0.059739178124238518 OKB target output",
+      "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "to": "Universal Router",
+      "explorerUrl": "https://www.oklink.com/xlayer/tx/0xbdf249d533939198bce9c34ef3727f2f6e9e1ddc64a2ee8beb0b40b32863fe99"
+    },
+    {
+      "id": "859ebcf0-ef03-4762-b609-717135fd09ba",
+      "hash": "0xa7e92ccbc71868a4733ecae2bdfac85073ef1527607c55d111e54d62a653eacc",
+      "timestamp": "2026-04-12T06:25:50.827Z",
+      "network": "Uniswap AI",
+      "linkLabel": "repo",
+      "mock": false,
+      "type": "route",
+      "label": "Uniswap + OKX live route quote",
+      "amount": "5 USDT -> 0.059739178124238518 OKB",
+      "from": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "to": "Uniswap AI",
+      "explorerUrl": "https://github.com/Uniswap/uniswap-ai"
+    },
+    {
+      "id": "619a359c-cdc1-44dc-90de-be1826c6cd3f",
+      "hash": "0x545e1d4a30326279cd1b46b110052d6bfe2fef5d390f5bd5cff5ea6a45f6d53e",
+      "timestamp": "2026-04-12T06:25:49.975Z",
+      "network": "OKX Market",
+      "linkLabel": "skills docs",
+      "mock": false,
+      "type": "market",
+      "label": "OKX Market live wallet snapshot",
+      "amount": "$23.21 wallet value",
+      "from": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "to": "OKX Market Skills",
+      "explorerUrl": "https://web3.okx.com/onchainos/dev-docs/home/skills-mcp-services"
+    }
+  ],
+  "livePurchases": [],
+  "live": {
+    "enabled": true,
+    "ready": true,
+    "updatedAt": "2026-04-12T06:25:42.096Z",
+    "wallet": {
+      "accountValueUsd": 23.21,
+      "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "tokens": [
+        {
+          "symbol": "OKB",
+          "balance": "0.16",
+          "usdValue": "13.4048",
+          "tokenAddress": "",
+          "tokenPrice": "83.78",
+          "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "chainIndex": "196"
+        },
+        {
+          "symbol": "USDT",
+          "balance": "9.806875",
+          "usdValue": "9.80962092",
+          "tokenAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "tokenPrice": "1.00028",
+          "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "chainIndex": "196"
+        }
+      ],
+      "quoteSeedAmount": "5",
+      "stableSymbol": "USDT"
+    },
+    "quote": {
+      "fromSymbol": "USDT",
+      "toSymbol": "OKB",
+      "fromAmount": "5",
+      "toAmount": "0.059739178124238518",
+      "priceImpactPercent": "0.08",
+      "tradeFeeUsd": "0.00054763686992448",
+      "route": [
+        {
+          "dexName": "Uniswap V4",
+          "percent": "100"
+        }
+      ],
+      "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "network": "X Layer",
+      "raw": {
+        "chainIndex": "196",
+        "contextSlot": 57206097,
+        "dexRouterList": [
+          {
+            "dexProtocol": {
+              "dexName": "Uniswap V4",
+              "percent": "100"
+            },
+            "fromToken": {
+              "decimal": "6",
+              "isHoneyPot": false,
+              "taxRate": "0",
+              "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "tokenSymbol": "USDT",
+              "tokenUnitPrice": "1.00027"
+            },
+            "fromTokenIndex": "0",
+            "toToken": {
+              "decimal": "18",
+              "isHoneyPot": false,
+              "taxRate": "0",
+              "tokenContractAddress": "0xe538905cf8410324e03a5a23c1c177a474d59b2b",
+              "tokenSymbol": "WOKB",
+              "tokenUnitPrice": "83.79"
+            },
+            "toTokenIndex": "1"
+          }
+        ],
+        "estimateGasFee": "288000",
+        "fromToken": {
+          "decimal": "6",
+          "isHoneyPot": false,
+          "taxRate": "0",
+          "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "tokenSymbol": "USDT",
+          "tokenUnitPrice": "1.00027"
+        },
+        "fromTokenAmount": "5000000",
+        "priceImpactPercent": "0.08",
+        "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "swapMode": "exactIn",
+        "toToken": {
+          "decimal": "18",
+          "isHoneyPot": false,
+          "taxRate": "0",
+          "tokenContractAddress": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "tokenSymbol": "OKB",
+          "tokenUnitPrice": "83.79"
+        },
+        "toTokenAmount": "59739178124238518",
+        "tradeFee": "0.00054763686992448"
+      }
+    },
+    "organization": [
+      {
+        "id": "orchestrator",
+        "name": "Orchestrator",
+        "role": "Command router",
+        "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+        "wallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+        "valueUsd": 23.21,
+        "holdings": [
+          {
+            "symbol": "OKB",
+            "balance": "0.16",
+            "usdValue": "13.4048"
+          },
+          {
+            "symbol": "USDT",
+            "balance": "9.806875",
+            "usdValue": "9.80952285"
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "scout",
+        "name": "Scout",
+        "role": "Market scouting",
+        "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+        "wallet": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+        "valueUsd": 1.84,
+        "holdings": [
+          {
+            "symbol": "USDT",
+            "balance": "1",
+            "usdValue": "1.00028"
+          },
+          {
+            "symbol": "OKB",
+            "balance": "0.01",
+            "usdValue": "0.8378"
+          }
+        ],
+        "quote": null
+      },
+      {
+        "id": "trader",
+        "name": "Trader",
+        "role": "Route execution",
+        "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+        "wallet": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+        "valueUsd": 6.68,
+        "holdings": [
+          {
+            "symbol": "USDT",
+            "balance": "5",
+            "usdValue": "5.0014"
+          },
+          {
+            "symbol": "OKB",
+            "balance": "0.02",
+            "usdValue": "1.6756"
+          }
+        ],
+        "quote": {
+          "fromSymbol": "USDT",
+          "toSymbol": "OKB",
+          "fromAmount": "5",
+          "toAmount": "0.059739178124238518",
+          "priceImpactPercent": "0.08",
+          "tradeFeeUsd": "0.00072358703778816",
+          "route": [
+            {
+              "dexName": "Uniswap V4",
+              "percent": "100"
+            }
+          ],
+          "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "network": "X Layer",
+          "raw": {
+            "chainIndex": "196",
+            "contextSlot": 57206097,
+            "dexRouterList": [
+              {
+                "dexProtocol": {
+                  "dexName": "Uniswap V4",
+                  "percent": "100"
+                },
+                "fromToken": {
+                  "decimal": "6",
+                  "isHoneyPot": false,
+                  "taxRate": "0",
+                  "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+                  "tokenSymbol": "USDT",
+                  "tokenUnitPrice": "1.00027"
+                },
+                "fromTokenIndex": "0",
+                "toToken": {
+                  "decimal": "18",
+                  "isHoneyPot": false,
+                  "taxRate": "0",
+                  "tokenContractAddress": "0xe538905cf8410324e03a5a23c1c177a474d59b2b",
+                  "tokenSymbol": "WOKB",
+                  "tokenUnitPrice": "83.79"
+                },
+                "toTokenIndex": "1"
+              }
+            ],
+            "estimateGasFee": "288000",
+            "fromToken": {
+              "decimal": "6",
+              "isHoneyPot": false,
+              "taxRate": "0",
+              "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "tokenSymbol": "USDT",
+              "tokenUnitPrice": "1.00027"
+            },
+            "fromTokenAmount": "5000000",
+            "priceImpactPercent": "0.08",
+            "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "swapMode": "exactIn",
+            "toToken": {
+              "decimal": "18",
+              "isHoneyPot": false,
+              "taxRate": "0",
+              "tokenContractAddress": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+              "tokenSymbol": "OKB",
+              "tokenUnitPrice": "83.79"
+            },
+            "toTokenAmount": "59739178124238518",
+            "tradeFee": "0.00072358703778816"
+          }
+        }
+      },
+      {
+        "id": "treasury",
+        "name": "Treasury",
+        "role": "Settlement proof",
+        "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+        "wallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "valueUsd": 1.86,
+        "holdings": [
+          {
+            "symbol": "USDT",
+            "balance": "1.025",
+            "usdValue": "1.02527675"
+          },
+          {
+            "symbol": "OKB",
+            "balance": "0.01",
+            "usdValue": "0.8378"
+          }
+        ],
+        "quote": null
+      }
+    ],
+    "x402": {
+      "ready": true,
+      "payoutMode": "organizational-treasury-collection",
+      "payoutWallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "settlementAsset": "USDT",
+      "settlementAssetAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+      "supportedCount": 1,
+      "supported": [
+        {
+          "x402Version": "1",
+          "chainIndex": "196",
+          "scheme": "exact",
+          "chainName": "X Layer"
+        }
+      ],
+      "cachedAt": "2026-04-12T04:48:04.175Z",
+      "source": "cached-supported-probe",
+      "error": null,
+      "workers": [
+        {
+          "id": "translator",
+          "name": "Translator",
+          "amount": 0.01,
+          "settlementAsset": "USDT",
+          "payoutWallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a"
+        },
+        {
+          "id": "summarizer",
+          "name": "Summarizer",
+          "amount": 0.005,
+          "settlementAsset": "USDT",
+          "payoutWallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a"
+        },
+        {
+          "id": "codeReviewer",
+          "name": "CodeReviewer",
+          "amount": 0.02,
+          "settlementAsset": "USDT",
+          "payoutWallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a"
+        }
+      ],
+      "livePurchases": [
+        {
+          "id": "914d1c46-b400-4527-b865-fb9cd161ed4e",
+          "createdAt": "2026-04-12T05:47:38.215Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "taskId": "ec8fd908-57c0-428a-aad0-95656b49396d",
+          "source": "mission",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase triggered by task ec8fd908-57c0-428a-aad0-95656b49396d",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x89ee479fa1bc37c06d7c2f07523c777175b6c7333daf2208fcbbe53dba3c6c9a",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776572854",
+                "value": "5000"
+              },
+              "signature": "0xc8b99d8b3ee2abd9d26b626678c06a15f2a8ccaa9f9ed5e21b71f194e76e931f213952e33cff7c63f7c214e7f998be833df8fba2ed4cb6b431c5342497568f1b1c"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0xd90ae744c0f9d2ca2b8fc37ad2d3183864ed664bf634064d3d46e91f086edc20",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "8a0caed3-4680-4ee7-aea2-9c7535ce62c4",
+          "createdAt": "2026-04-12T05:46:01.009Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "taskId": "0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+          "source": "mission",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase triggered by task 0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x316d36c48db27b25d382114d455f0d8c5ced6363b022a020037b3b9a7b6f988c",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776572757",
+                "value": "5000"
+              },
+              "signature": "0xf0b9f7c4f71d63c0fe7ebe13d48df59d6179fa42b593cb292abc587b885121290bb45132e13e6c5ad92dd3df1acd661f5bdefc1e48e62e5f575cac29e3bdc2431b"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0x0d418c40b73c50247c495fa1deee8bbea86688588ff91bce3cbcd89c11dc152c",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "4fd295f9-e66d-44d9-b4bb-97c5db10a135",
+          "createdAt": "2026-04-12T05:22:19.804Z",
+          "status": "settled",
+          "workerId": "translator",
+          "workerName": "Translator",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.010 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "10000",
+            "resource": "http://127.0.0.1:3000/workers/translator",
+            "description": "Translator specialist purchase triggered from the dashboard",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "10000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x9dcfab94b078bd06962aa2c141c3c874bb4cc3d994038bd4da1bb0f46ab644d6",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776571337",
+                "value": "10000"
+              },
+              "signature": "0x738ec40514f8ec02d7fc32b1121c3a7c3fb9a74bb3e14316957dcd7b4dc55bb436584b90db7f70a2efc3ab872b9eeed1cf19ebd64962815d1fd32eb022508ca21b"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0x1353cf0e0bd9adbbffdfae20d35fde9d517d3450ab107eb773f1282ddd359191",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "0a69c91d-e0f3-4246-8c61-e1f3aa7257ab",
+          "createdAt": "2026-04-12T05:10:43.813Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x84e0a4a27c0f0dd2c5ff6ff4338302f53adee04e6616861490d0e9261e6af400",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776570640",
+                "value": "5000"
+              },
+              "signature": "0x95202f0184a46bec29ed7218a792448ada4e9f4d1549cc17a4cbe292ab36851f4181d0dfc70fe8caca27d17225adffcd4538ad12d622de993601d0a2dc195a6c1c"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0xf831161dc5fc9f3738d42eb2cee5cf20dc957e13a4a3cfe9360474ed043c4e3f",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "registryAddress": null,
+      "receiptAddress": null,
+      "registrations": [],
+      "taskProofs": [],
+      "updatedAt": null,
+      "ready": false
+    },
+    "fundingLedger": {
+      "network": "X Layer",
+      "fundedAt": "2026-04-12",
+      "source": {
+        "role": "Orchestrator",
+        "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+        "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+      },
+      "transfers": [
+        {
+          "role": "Scout",
+          "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+          "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.01"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "1",
+              "txHash": "0xab15ba3c898c639025fa1d4001836ddd1ef4e0ef6dcb23b16a4e3ae47e31d312"
+            }
+          ]
+        },
+        {
+          "role": "Trader",
+          "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+          "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.02"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "5",
+              "txHash": "0xd9fbab018e8c16980e583e0fd3594ec7246da50d04f884bf5a025a35292098b6"
+            }
+          ]
+        },
+        {
+          "role": "Treasury",
+          "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+          "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.01",
+              "txHash": "0x2f62aa54ead00b11cf4f9115a5e7a04643d55b7838a6cc7c19d5ebdf5e0e3561"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "1",
+              "txHash": "0xfaf167077aa77786038bee60f80cdf399d0f3ccf9a434ebb626a4bc0f735bacb"
+            }
+          ]
+        }
+      ],
+      "postFundingBalances": [
+        {
+          "role": "Orchestrator",
+          "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.16"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "9.831875"
+            }
+          ]
+        },
+        {
+          "role": "Scout",
+          "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.01"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "1"
+            }
+          ]
+        },
+        {
+          "role": "Trader",
+          "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.02"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "5"
+            }
+          ]
+        },
+        {
+          "role": "Treasury",
+          "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "assets": [
+            {
+              "symbol": "OKB",
+              "amount": "0.01"
+            },
+            {
+              "symbol": "USDT",
+              "amount": "1"
+            }
+          ]
+        }
+      ]
+    },
+    "livePurchases": {
+      "purchases": [
+        {
+          "id": "914d1c46-b400-4527-b865-fb9cd161ed4e",
+          "createdAt": "2026-04-12T05:47:38.215Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "taskId": "ec8fd908-57c0-428a-aad0-95656b49396d",
+          "source": "mission",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase triggered by task ec8fd908-57c0-428a-aad0-95656b49396d",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x89ee479fa1bc37c06d7c2f07523c777175b6c7333daf2208fcbbe53dba3c6c9a",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776572854",
+                "value": "5000"
+              },
+              "signature": "0xc8b99d8b3ee2abd9d26b626678c06a15f2a8ccaa9f9ed5e21b71f194e76e931f213952e33cff7c63f7c214e7f998be833df8fba2ed4cb6b431c5342497568f1b1c"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0xd90ae744c0f9d2ca2b8fc37ad2d3183864ed664bf634064d3d46e91f086edc20",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "8a0caed3-4680-4ee7-aea2-9c7535ce62c4",
+          "createdAt": "2026-04-12T05:46:01.009Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "taskId": "0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+          "source": "mission",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase triggered by task 0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x316d36c48db27b25d382114d455f0d8c5ced6363b022a020037b3b9a7b6f988c",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776572757",
+                "value": "5000"
+              },
+              "signature": "0xf0b9f7c4f71d63c0fe7ebe13d48df59d6179fa42b593cb292abc587b885121290bb45132e13e6c5ad92dd3df1acd661f5bdefc1e48e62e5f575cac29e3bdc2431b"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0x0d418c40b73c50247c495fa1deee8bbea86688588ff91bce3cbcd89c11dc152c",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "4fd295f9-e66d-44d9-b4bb-97c5db10a135",
+          "createdAt": "2026-04-12T05:22:19.804Z",
+          "status": "settled",
+          "workerId": "translator",
+          "workerName": "Translator",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.010 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "10000",
+            "resource": "http://127.0.0.1:3000/workers/translator",
+            "description": "Translator specialist purchase triggered from the dashboard",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "10000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x9dcfab94b078bd06962aa2c141c3c874bb4cc3d994038bd4da1bb0f46ab644d6",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776571337",
+                "value": "10000"
+              },
+              "signature": "0x738ec40514f8ec02d7fc32b1121c3a7c3fb9a74bb3e14316957dcd7b4dc55bb436584b90db7f70a2efc3ab872b9eeed1cf19ebd64962815d1fd32eb022508ca21b"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0x1353cf0e0bd9adbbffdfae20d35fde9d517d3450ab107eb773f1282ddd359191",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        },
+        {
+          "id": "0a69c91d-e0f3-4246-8c61-e1f3aa7257ab",
+          "createdAt": "2026-04-12T05:10:43.813Z",
+          "status": "settled",
+          "workerId": "summarizer",
+          "workerName": "Summarizer",
+          "payerId": "orchestrator",
+          "payerName": "Orchestrator",
+          "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "amountDisplay": "0.005 USDT",
+          "paymentRequirements": {
+            "scheme": "exact",
+            "chainIndex": "196",
+            "maxAmountRequired": "5000",
+            "resource": "http://127.0.0.1:3000/workers/summarizer",
+            "description": "Summarizer specialist purchase",
+            "mimeType": "application/json",
+            "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "maxTimeoutSeconds": 600000,
+            "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "outputSchema": null,
+            "extra": {
+              "name": "USD₮0",
+              "version": "1"
+            }
+          },
+          "accepts": [
+            {
+              "scheme": "exact",
+              "network": "eip155:196",
+              "amount": "5000",
+              "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+              "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+              "maxTimeoutSeconds": 600000,
+              "extra": {
+                "name": "USD₮0",
+                "version": "1"
+              }
+            }
+          ],
+          "paymentPayload": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:196",
+            "payload": {
+              "authorization": {
+                "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+                "nonce": "0x84e0a4a27c0f0dd2c5ff6ff4338302f53adee04e6616861490d0e9261e6af400",
+                "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+                "validAfter": "0",
+                "validBefore": "1776570640",
+                "value": "5000"
+              },
+              "signature": "0x95202f0184a46bec29ed7218a792448ada4e9f4d1549cc17a4cbe292ab36851f4181d0dfc70fe8caca27d17225adffcd4538ad12d622de993601d0a2dc195a6c1c"
+            }
+          },
+          "verify": [
+            {
+              "isValid": true,
+              "invalidReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+            }
+          ],
+          "settle": [
+            {
+              "success": true,
+              "errorReason": null,
+              "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+              "txHash": "0xf831161dc5fc9f3738d42eb2cee5cf20dc957e13a4a3cfe9360474ed043c4e3f",
+              "chainName": "X Layer",
+              "chainIndex": 196
+            }
+          ]
+        }
+      ],
+      "updatedAt": "2026-04-12T05:47:38.216Z"
+    },
+    "error": null
+  },
+  "organization": [
+    {
+      "id": "orchestrator",
+      "name": "Orchestrator",
+      "role": "Command router",
+      "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+      "wallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "valueUsd": 23.21,
+      "holdings": [
+        {
+          "symbol": "OKB",
+          "balance": "0.16",
+          "usdValue": "13.4048"
+        },
+        {
+          "symbol": "USDT",
+          "balance": "9.806875",
+          "usdValue": "9.80952285"
+        }
+      ],
+      "quote": null
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "role": "Market scouting",
+      "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+      "wallet": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "valueUsd": 1.84,
+      "holdings": [
+        {
+          "symbol": "USDT",
+          "balance": "1",
+          "usdValue": "1.00028"
+        },
+        {
+          "symbol": "OKB",
+          "balance": "0.01",
+          "usdValue": "0.8378"
+        }
+      ],
+      "quote": null
+    },
+    {
+      "id": "trader",
+      "name": "Trader",
+      "role": "Route execution",
+      "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+      "wallet": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "valueUsd": 6.68,
+      "holdings": [
+        {
+          "symbol": "USDT",
+          "balance": "5",
+          "usdValue": "5.0014"
+        },
+        {
+          "symbol": "OKB",
+          "balance": "0.02",
+          "usdValue": "1.6756"
+        }
+      ],
+      "quote": {
+        "fromSymbol": "USDT",
+        "toSymbol": "OKB",
+        "fromAmount": "5",
+        "toAmount": "0.059739178124238518",
+        "priceImpactPercent": "0.08",
+        "tradeFeeUsd": "0.00072358703778816",
+        "route": [
+          {
+            "dexName": "Uniswap V4",
+            "percent": "100"
+          }
+        ],
+        "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "network": "X Layer",
+        "raw": {
+          "chainIndex": "196",
+          "contextSlot": 57206097,
+          "dexRouterList": [
+            {
+              "dexProtocol": {
+                "dexName": "Uniswap V4",
+                "percent": "100"
+              },
+              "fromToken": {
+                "decimal": "6",
+                "isHoneyPot": false,
+                "taxRate": "0",
+                "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+                "tokenSymbol": "USDT",
+                "tokenUnitPrice": "1.00027"
+              },
+              "fromTokenIndex": "0",
+              "toToken": {
+                "decimal": "18",
+                "isHoneyPot": false,
+                "taxRate": "0",
+                "tokenContractAddress": "0xe538905cf8410324e03a5a23c1c177a474d59b2b",
+                "tokenSymbol": "WOKB",
+                "tokenUnitPrice": "83.79"
+              },
+              "toTokenIndex": "1"
+            }
+          ],
+          "estimateGasFee": "288000",
+          "fromToken": {
+            "decimal": "6",
+            "isHoneyPot": false,
+            "taxRate": "0",
+            "tokenContractAddress": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+            "tokenSymbol": "USDT",
+            "tokenUnitPrice": "1.00027"
+          },
+          "fromTokenAmount": "5000000",
+          "priceImpactPercent": "0.08",
+          "router": "0x779ded0c9e1022225f8e0630b35a9b54be713736--0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "swapMode": "exactIn",
+          "toToken": {
+            "decimal": "18",
+            "isHoneyPot": false,
+            "taxRate": "0",
+            "tokenContractAddress": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "tokenSymbol": "OKB",
+            "tokenUnitPrice": "83.79"
+          },
+          "toTokenAmount": "59739178124238518",
+          "tradeFee": "0.00072358703778816"
+        }
+      }
+    },
+    {
+      "id": "treasury",
+      "name": "Treasury",
+      "role": "Settlement proof",
+      "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+      "wallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "valueUsd": 1.86,
+      "holdings": [
+        {
+          "symbol": "USDT",
+          "balance": "1.025",
+          "usdValue": "1.02527675"
+        },
+        {
+          "symbol": "OKB",
+          "balance": "0.01",
+          "usdValue": "0.8378"
+        }
+      ],
+      "quote": null
+    }
+  ],
+  "fundingLedger": {
+    "network": "X Layer",
+    "fundedAt": "2026-04-12",
+    "source": {
+      "role": "Orchestrator",
+      "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+      "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+    },
+    "transfers": [
+      {
+        "role": "Scout",
+        "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+        "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.01"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "1",
+            "txHash": "0xab15ba3c898c639025fa1d4001836ddd1ef4e0ef6dcb23b16a4e3ae47e31d312"
+          }
+        ]
+      },
+      {
+        "role": "Trader",
+        "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+        "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.02"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "5",
+            "txHash": "0xd9fbab018e8c16980e583e0fd3594ec7246da50d04f884bf5a025a35292098b6"
+          }
+        ]
+      },
+      {
+        "role": "Treasury",
+        "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+        "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.01",
+            "txHash": "0x2f62aa54ead00b11cf4f9115a5e7a04643d55b7838a6cc7c19d5ebdf5e0e3561"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "1",
+            "txHash": "0xfaf167077aa77786038bee60f80cdf399d0f3ccf9a434ebb626a4bc0f735bacb"
+          }
+        ]
+      }
+    ],
+    "postFundingBalances": [
+      {
+        "role": "Orchestrator",
+        "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.16"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "9.831875"
+          }
+        ]
+      },
+      {
+        "role": "Scout",
+        "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.01"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "1"
+          }
+        ]
+      },
+      {
+        "role": "Trader",
+        "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.02"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "5"
+          }
+        ]
+      },
+      {
+        "role": "Treasury",
+        "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "assets": [
+          {
+            "symbol": "OKB",
+            "amount": "0.01"
+          },
+          {
+            "symbol": "USDT",
+            "amount": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "receipt": {
+    "tokenId": "SM-6E409715",
+    "totalPaid": "$0.005 USDT",
+    "workerCount": 1,
+    "agentCount": 5,
+    "protocolLane": "OKX Market -> OKX Trade -> Uniswap AI -> x402 -> X Layer",
+    "thesis": "Scout the market, route treasury capital, strengthen the operating budget, then hire specialist agents.",
+    "taskHash": "0x87da8cff5667c0b7db06d2edf8f7fcdb58c75e868c0d429ef3ffc26ecc701bda",
+    "receiptTxHash": "0xc8378613f232dbc7f4a204c7e3d0b4cc0b72be9b2c092235b4b4ec92f4a4a924",
+    "completionTxHash": "0x0bc03428dd3881f2a653425c1fce09618b9c514d9cbb37d76a23543cbf70bea3",
+    "downloadUrl": "/api/tasks/6e409715-4a6b-4c31-8cd0-87c8888ac54c/receipt.json",
+    "artifactUrl": "/artifacts/receipts/6e409715-4a6b-4c31-8cd0-87c8888ac54c.json",
+    "liveSpecialistCount": 0,
+    "payoutMap": [
+      {
+        "worker": "Summarizer",
+        "amount": "$0.005 USDT",
+        "cardUrl": "/agent-cards/summarizer.json"
+      }
+    ],
+    "liveWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+  },
+  "receiptArtifactUrl": "/artifacts/receipts/6e409715-4a6b-4c31-8cd0-87c8888ac54c.json",
+  "finalOutput": "Strategy: Scout the market, route treasury capital, strengthen the operating budget, then hire specialist agents.\nExecution lane: Scout -> Trader -> Summarizer\nBudget policy: Deploy treasury budget into 1 specialist worker call over x402.\nTreasury loop: Scout -> Route -> Fund -> Hire -> Prove\n\nScout: OKX scout readout: live treasury wallet detected at 0x90ec52fe001a5b59b356eb55ffb6931b7c37db26. Current operating reserves: 0.16 OKB, 9.806875 USDT.\nTrader: Trader plan: live quote fetched for 5 USDT -> 0.059739178124238518 OKB via Uniswap V4, keeping treasury deployment capital-aware.\nSummarizer: Three-line summary: the request asks for a compact execution story, protocol clarity, and a final output that judges can scan in seconds.\n\nProof lane: Treasury records why budget was spent, who was hired, and what proof artifact was produced on X Layer."
+}

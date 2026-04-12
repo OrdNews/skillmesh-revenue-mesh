@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Treasury",
+  "version": "0.1.0",
+  "role": "treasury",
+  "skill": "receipt-minting",
+  "wallet": "0xd4ab...8c63",
+  "network": "xlayer",
+  "pricing": {
+    "model": "internal-settlement",
+    "usdPerCall": null
+  },
+  "service": {
+    "protocol": "contract-write",
+    "endpoint": "/workers/treasury",
+    "paymentAsset": "USDC"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Records task completion, anchors protocol evidence on X Layer, and mints the final receipt."
+  }
+}

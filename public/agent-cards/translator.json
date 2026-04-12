@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Translator",
+  "version": "0.1.0",
+  "role": "worker",
+  "skill": "translation",
+  "wallet": "0xa3f4...9d21",
+  "network": "xlayer",
+  "pricing": {
+    "model": "pay-per-call",
+    "usdPerCall": 0.01
+  },
+  "service": {
+    "protocol": "x402",
+    "endpoint": "/workers/translator",
+    "paymentAsset": "USDT"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Converts launch, README, and demo copy into judge-friendly multilingual output."
+  }
+}

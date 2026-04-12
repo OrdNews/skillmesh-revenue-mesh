@@ -1,0 +1,74 @@
+{
+  "updatedAt": "2026-04-12T09:20:54.659Z",
+  "registrations": [
+    {
+      "id": "orchestrator-1775984911807",
+      "createdAt": "2026-04-12T09:08:31.807Z",
+      "agentId": "orchestrator",
+      "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+      "wallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "tx": {
+        "txHash": "0xe7812d5ce4a731b9444b9cf36980f12542de973284b28e7f4ad6cf2b63cc0959"
+      }
+    },
+    {
+      "id": "scout-1775984912369",
+      "createdAt": "2026-04-12T09:08:32.369Z",
+      "agentId": "scout",
+      "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+      "wallet": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "tx": {
+        "txHash": "0xf7b85accff1f4a103b873e95b64e0518eeb590e8b427a424c680ceee41a4568d"
+      }
+    },
+    {
+      "id": "trader-1775984912815",
+      "createdAt": "2026-04-12T09:08:32.815Z",
+      "agentId": "trader",
+      "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+      "wallet": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "tx": {
+        "txHash": "0x70072369d34d013de063ce533ad79039e14c231c7a77918541ddf3cd038045d9"
+      }
+    },
+    {
+      "id": "treasury-1775984913209",
+      "createdAt": "2026-04-12T09:08:33.209Z",
+      "agentId": "treasury",
+      "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+      "wallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "tx": {
+        "txHash": "0x871b33c1d6411304e86a52403d33422be06ae7761db66c84be266a05af8b2dfb"
+      }
+    }
+  ],
+  "taskProofs": [
+    {
+      "id": "5cafdc6f-5aa8-4596-af86-a8fabc8ecd61-1775985654658",
+      "taskId": "5cafdc6f-5aa8-4596-af86-a8fabc8ecd61",
+      "createdAt": "2026-04-12T09:20:54.658Z",
+      "proofTaskHash": "0x6552ea8a0009cd483819b2d9ddeaed9215da95397fbc6a4a0ab88a19ca65ad30",
+      "mode": "all",
+      "outputs": {
+        "recordTaskCompletion": {
+          "txHash": "0xbdc153b13c48fec7e2da104f90bdf9755d375b48524e6786784c15191469e50c"
+        },
+        "mintReceipt": {
+          "txHash": "0xcfa37406418fd82eae96c254b55032b8fa304ee126be4acca9554b3ef8587268"
+        }
+      }
+    },
+    {
+      "id": "cf8ea667-e599-4177-920e-d499af4a6b88-1775985479036",
+      "taskId": "cf8ea667-e599-4177-920e-d499af4a6b88",
+      "createdAt": "2026-04-12T09:17:59.036Z",
+      "proofTaskHash": "0xcaee83bf6d6b793a6560d8fea70dd9bbf72f3e7e8d3e41ab730273abd2204e18",
+      "mode": "receipt",
+      "outputs": {
+        "mintReceipt": {
+          "txHash": "0xd64aea9d1338683d815e5ca89e0dbb41b1a33450134fdcb2436a123132b74b63"
+        }
+      }
+    }
+  ]
+}

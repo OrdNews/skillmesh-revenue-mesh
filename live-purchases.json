@@ -1,0 +1,540 @@
+{
+  "updatedAt": "2026-04-12T09:20:05.328Z",
+  "purchases": [
+    {
+      "id": "03da8137-f798-46de-8f6a-0243ce84ab26",
+      "createdAt": "2026-04-12T09:20:05.252Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "taskId": "5cafdc6f-5aa8-4596-af86-a8fabc8ecd61",
+      "source": "mission",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase triggered by task 5cafdc6f-5aa8-4596-af86-a8fabc8ecd61",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x6957c1eadf37e8e795c53e58a809e239f74d67df2808d4cf68aaf08711419b90",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776585603",
+            "value": "5000"
+          },
+          "signature": "0x0cf8e3f3a85e4c1c03f897f9789d2f34a8f74705a89bbba9f44a4ae0972ef8e56719d50452cb10bd749c5a78cb2de250a0459818a3a35c523ed98d740811d0171c"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0x9c72cd4131f398f743bf4aa75033a1e42f04202cbf643fe69462d5fdc9678d05",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "c7a90a56-6a74-45d9-9cc3-23d60a4c42f5",
+      "createdAt": "2026-04-12T09:18:38.381Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "taskId": "b1909479-1cf8-4e83-ac52-da0353eed297",
+      "source": "mission",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase triggered by task b1909479-1cf8-4e83-ac52-da0353eed297",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0xa21748af58c63e9f29e6739cc8c3a8a9ea30b685c0986d1737766cfbf80e202e",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776585515",
+            "value": "5000"
+          },
+          "signature": "0x5fea3b75d02d1fe58056f5c0cf737328db8532a708177a43991a5dbcc3488d2c2e3d356903bf66e73dd4933cd5cc1ca100bd17fda5b12de9f23507269010a9d91b"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0x7a43aead1ddc437f30c6915014e3901e7441b42bc79c543bb05a4402d420e187",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "8af1a9d9-c6bf-43f7-b72a-04d73bae8604",
+      "createdAt": "2026-04-12T09:15:26.009Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "taskId": "cf8ea667-e599-4177-920e-d499af4a6b88",
+      "source": "mission",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase triggered by task cf8ea667-e599-4177-920e-d499af4a6b88",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x7926f96975323e4a82848fca85730750b32554a5e9479e87625628758b0c95c8",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776585324",
+            "value": "5000"
+          },
+          "signature": "0xdeca1bd59d56192496ed02440575c5d2c4e962ef2b798239dab9dfe27977d0c0210a842703c95c9730a48d700d36f795fb9815fe5cf2dda8799c01846c06a8b01c"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0x31c89c2e8ff39bc31f3696258ece65c785542c9a321fdf8c7fb8427ceb1f1933",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "914d1c46-b400-4527-b865-fb9cd161ed4e",
+      "createdAt": "2026-04-12T05:47:38.215Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "taskId": "ec8fd908-57c0-428a-aad0-95656b49396d",
+      "source": "mission",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase triggered by task ec8fd908-57c0-428a-aad0-95656b49396d",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x89ee479fa1bc37c06d7c2f07523c777175b6c7333daf2208fcbbe53dba3c6c9a",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776572854",
+            "value": "5000"
+          },
+          "signature": "0xc8b99d8b3ee2abd9d26b626678c06a15f2a8ccaa9f9ed5e21b71f194e76e931f213952e33cff7c63f7c214e7f998be833df8fba2ed4cb6b431c5342497568f1b1c"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0xd90ae744c0f9d2ca2b8fc37ad2d3183864ed664bf634064d3d46e91f086edc20",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "8a0caed3-4680-4ee7-aea2-9c7535ce62c4",
+      "createdAt": "2026-04-12T05:46:01.009Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "taskId": "0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+      "source": "mission",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase triggered by task 0844e4c5-a0f4-43fe-bb8c-278f1de97b80",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x316d36c48db27b25d382114d455f0d8c5ced6363b022a020037b3b9a7b6f988c",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776572757",
+            "value": "5000"
+          },
+          "signature": "0xf0b9f7c4f71d63c0fe7ebe13d48df59d6179fa42b593cb292abc587b885121290bb45132e13e6c5ad92dd3df1acd661f5bdefc1e48e62e5f575cac29e3bdc2431b"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0x0d418c40b73c50247c495fa1deee8bbea86688588ff91bce3cbcd89c11dc152c",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "4fd295f9-e66d-44d9-b4bb-97c5db10a135",
+      "createdAt": "2026-04-12T05:22:19.804Z",
+      "status": "settled",
+      "workerId": "translator",
+      "workerName": "Translator",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.010 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "10000",
+        "resource": "http://127.0.0.1:3000/workers/translator",
+        "description": "Translator specialist purchase triggered from the dashboard",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "10000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x9dcfab94b078bd06962aa2c141c3c874bb4cc3d994038bd4da1bb0f46ab644d6",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776571337",
+            "value": "10000"
+          },
+          "signature": "0x738ec40514f8ec02d7fc32b1121c3a7c3fb9a74bb3e14316957dcd7b4dc55bb436584b90db7f70a2efc3ab872b9eeed1cf19ebd64962815d1fd32eb022508ca21b"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0x1353cf0e0bd9adbbffdfae20d35fde9d517d3450ab107eb773f1282ddd359191",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    },
+    {
+      "id": "0a69c91d-e0f3-4246-8c61-e1f3aa7257ab",
+      "createdAt": "2026-04-12T05:10:43.813Z",
+      "status": "settled",
+      "workerId": "summarizer",
+      "workerName": "Summarizer",
+      "payerId": "orchestrator",
+      "payerName": "Orchestrator",
+      "payerWallet": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "amountDisplay": "0.005 USDT",
+      "paymentRequirements": {
+        "scheme": "exact",
+        "chainIndex": "196",
+        "maxAmountRequired": "5000",
+        "resource": "http://127.0.0.1:3000/workers/summarizer",
+        "description": "Summarizer specialist purchase",
+        "mimeType": "application/json",
+        "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+        "maxTimeoutSeconds": 600000,
+        "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+        "outputSchema": null,
+        "extra": {
+          "name": "USD₮0",
+          "version": "1"
+        }
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:196",
+          "amount": "5000",
+          "asset": "0x779ded0c9e1022225f8e0630b35a9b54be713736",
+          "payTo": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+          "maxTimeoutSeconds": 600000,
+          "extra": {
+            "name": "USD₮0",
+            "version": "1"
+          }
+        }
+      ],
+      "paymentPayload": {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "eip155:196",
+        "payload": {
+          "authorization": {
+            "from": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+            "nonce": "0x84e0a4a27c0f0dd2c5ff6ff4338302f53adee04e6616861490d0e9261e6af400",
+            "to": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+            "validAfter": "0",
+            "validBefore": "1776570640",
+            "value": "5000"
+          },
+          "signature": "0x95202f0184a46bec29ed7218a792448ada4e9f4d1549cc17a4cbe292ab36851f4181d0dfc70fe8caca27d17225adffcd4538ad12d622de993601d0a2dc195a6c1c"
+        }
+      },
+      "verify": [
+        {
+          "isValid": true,
+          "invalidReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26"
+        }
+      ],
+      "settle": [
+        {
+          "success": true,
+          "errorReason": null,
+          "payer": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+          "txHash": "0xf831161dc5fc9f3738d42eb2cee5cf20dc957e13a4a3cfe9360474ed043c4e3f",
+          "chainName": "X Layer",
+          "chainIndex": 196
+        }
+      ]
+    }
+  ]
+}

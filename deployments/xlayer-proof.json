@@ -1,0 +1,28 @@
+{
+  "chain": "xlayer",
+  "updatedAt": "2026-04-12T09:08:09.218Z",
+  "deployer": {
+    "agentId": "treasury",
+    "wallet": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a"
+  },
+  "factoryAddress": "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+  "registry": {
+    "address": "0xAe0bCB2181ff57E344D65aFBB6B033acf799d345",
+    "salt": "0xe7c2ffa65ca24f02ffa181cbf130c5dfb22c715da96b886f4e61074410c8b9e4",
+    "bytecodeHash": "0x971190c91e1886b3e135510f02bd1c67161804dcc00d548fae560d690132a283",
+    "tx": {
+      "txHash": "0x70e2a9a2cbd5e68f380f8f7b080b9baabf9e3dc4fc3de185e7949f0fc767b842"
+    },
+    "reused": false
+  },
+  "receipt": {
+    "address": "0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3",
+    "salt": "0xf37cda2ead567a347811ec2b6cfe06a3e79fcdba7b7b6cd22a0888684a58c181",
+    "bytecodeHash": "0xe4d7069181a85ddc76b17a7409a8ea660bc824ae6b2e402d6d20b22df05298fa",
+    "tx": {
+      "txHash": "0x33f80872d0a53bc20879d491120b9ea4b676b09c2e45bc4bf6cc3fc47f898ebe"
+    },
+    "reused": false
+  },
+  "previous": null
+}

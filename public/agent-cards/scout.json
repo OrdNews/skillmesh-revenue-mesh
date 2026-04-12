@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Scout",
+  "version": "0.2.0",
+  "role": "worker",
+  "skill": "okx-market-intel",
+  "wallet": "0xe15b...11c9",
+  "network": "xlayer",
+  "pricing": {
+    "model": "internal-market-loop",
+    "usdPerCall": null
+  },
+  "service": {
+    "protocol": "okx-market-skill",
+    "endpoint": "/workers/scout",
+    "paymentAsset": "USDC"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Reads OKX market context, wallet state, and opportunity signals before the orchestrator commits capital."
+  }
+}

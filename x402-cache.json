@@ -1,0 +1,11 @@
+{
+  "refreshedAt": "2026-04-12T04:48:04.175Z",
+  "supported": [
+    {
+      "x402Version": "1",
+      "chainIndex": "196",
+      "scheme": "exact",
+      "chainName": "X Layer"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh CodeReviewer",
+  "version": "0.1.0",
+  "role": "worker",
+  "skill": "code-review",
+  "wallet": "0xc8e1...4b72",
+  "network": "xlayer",
+  "pricing": {
+    "model": "pay-per-call",
+    "usdPerCall": 0.02
+  },
+  "service": {
+    "protocol": "x402",
+    "endpoint": "/workers/codeReviewer",
+    "paymentAsset": "USDT"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Reviews execution plans and code paths to keep the MVP sharp and judge-friendly."
+  }
+}

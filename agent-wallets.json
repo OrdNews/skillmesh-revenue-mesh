@@ -1,0 +1,34 @@
+{
+  "updatedAt": "2026-04-12T04:20:00+08:00",
+  "network": "X Layer",
+  "accounts": [
+    {
+      "role": "Orchestrator",
+      "accountId": "095cbe13-ef3e-4969-9858-fa3566ea4f56",
+      "accountName": "Account 2",
+      "address": "0x90ec52fe001a5b59b356eb55ffb6931b7c37db26",
+      "status": "funded"
+    },
+    {
+      "role": "Scout",
+      "accountId": "0fc75072-b5dd-4490-a650-0e6347fe2e38",
+      "accountName": "Account 3",
+      "address": "0x399b67977ec2b478568a9ecb7a27cb48c2d99ecb",
+      "status": "funded"
+    },
+    {
+      "role": "Trader",
+      "accountId": "ba91c05f-288b-40d3-94e2-544acb6a79e2",
+      "accountName": "Account 4",
+      "address": "0x7bd1931968132d893971b3f715c1153ddf70b3d5",
+      "status": "funded"
+    },
+    {
+      "role": "Treasury",
+      "accountId": "78a68c07-30cf-41a2-b354-b482a15549d4",
+      "accountName": "Account 5",
+      "address": "0x86a031a0618b43a0269e0e20d504fca6fc3a149a",
+      "status": "funded"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "skillmesh-commerce",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local prototype for SkillMesh Revenue Mesh, a self-funding agent organization on X Layer.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "purchase:summarizer": "node scripts/live-x402-purchase.js --worker summarizer",
+    "purchase:translator": "node scripts/live-x402-purchase.js --worker translator",
+    "purchase:review": "node scripts/live-x402-purchase.js --worker codeReviewer",
+    "proof:deploy": "node scripts/deploy-proof-contracts.js",
+    "proof:register": "node scripts/register-agent-profiles.js",
+    "proof:write": "node scripts/write-task-proof.js"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "ethers": "^6.16.0",
+    "solc": "^0.8.34"
+  }
+}

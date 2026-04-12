@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Trader",
+  "version": "0.2.0",
+  "role": "worker",
+  "skill": "uniswap-route-planning",
+  "wallet": "0xf93e...7ab8",
+  "network": "xlayer",
+  "pricing": {
+    "model": "internal-execution-loop",
+    "usdPerCall": null
+  },
+  "service": {
+    "protocol": "uniswap-ai",
+    "endpoint": "/workers/trader",
+    "paymentAsset": "USDC"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Plans swap paths, prepares pay-with-any-token fallbacks, and turns market context into an executable route."
+  }
+}

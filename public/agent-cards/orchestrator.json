@@ -1,0 +1,21 @@
+{
+  "name": "SkillMesh Orchestrator",
+  "version": "0.1.0",
+  "role": "orchestrator",
+  "skill": "workflow-planning",
+  "wallet": "0x7c6a...0f01",
+  "network": "xlayer",
+  "pricing": {
+    "model": "internal-routing",
+    "usdPerCall": null
+  },
+  "service": {
+    "protocol": "x402",
+    "endpoint": "/workers/orchestrator",
+    "paymentAsset": "USDC"
+  },
+  "metadata": {
+    "team": "SkillMesh Commerce",
+    "description": "Receives the user request, activates the OKX and Uniswap execution lane, chooses workers, and composes the final receipt-backed delivery."
+  }
+}
