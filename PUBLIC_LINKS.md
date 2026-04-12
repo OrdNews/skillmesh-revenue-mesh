@@ -2,7 +2,7 @@
 
 Fill these only after the public surfaces are live.
 
-- `<<GITHUB_URL>>`
+- `https://github.com/OrdNews/skillmesh-revenue-mesh`
 - `<<DEMO_URL>>`
 - `<<MOLTBOOK_URL>>`
 - `<<X_POST_URL>>`

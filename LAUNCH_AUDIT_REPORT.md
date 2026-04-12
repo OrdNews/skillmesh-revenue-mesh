@@ -70,9 +70,13 @@ We already have:
 
 ### 1. Public repo surface is incomplete
 
-Blocker.
+Resolved in part.
 
-We still need a public repo with final links filled in:
+The public repo is now live:
+
+- `https://github.com/OrdNews/skillmesh-revenue-mesh`
+
+What still needs to be completed inside the repo surface:
 
 - demo video
 - Moltbook post
@@ -142,8 +146,7 @@ We should keep rehearsing, capturing screenshots, and finalizing public material
 
 Do not publish externally until these are done:
 
-1. public GitHub repo is live
-2. Moltbook post is live
-3. X launch post is ready
-4. 90-150 second demo script is locked
-5. Google Form answers are finalized with final links only
+1. Moltbook post is live
+2. X launch post is ready
+3. 90-150 second demo script is locked and recorded
+4. Google Form answers are finalized with final links only

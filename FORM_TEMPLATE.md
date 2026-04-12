@@ -46,7 +46,7 @@ Use the Orchestrator wallet as the canonical organization identity.
 
 ## GitHub Repository
 
-`<<GITHUB_URL>>`
+`https://github.com/OrdNews/skillmesh-revenue-mesh`
 
 ## Demo Video
 

@@ -20,7 +20,7 @@ This is not a generic task bot or a pure trading bot.
 
 It is an onchain organization that can hold budget, buy specialist intelligence, and leave proof onchain.
 
-GitHub: `<<GITHUB_URL>>`
+GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
 Demo: `<<DEMO_URL>>`
 Moltbook: `<<MOLTBOOK_URL>>`
 

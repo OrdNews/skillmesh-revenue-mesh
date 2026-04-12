@@ -51,7 +51,7 @@ Canonical proof:
 
 Links:
 
-- GitHub: `<<GITHUB_URL>>`
+- GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
 - Demo video: `<<DEMO_URL>>`
 - X post: `<<X_POST_URL>>`
 

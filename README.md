@@ -97,7 +97,7 @@ The Orchestrator wallet is the canonical organization identity for submission.
 
 ## Public links
 
-- GitHub: `<<GITHUB_URL>>`
+- GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
 - Demo video: `<<DEMO_URL>>`
 - Moltbook: `<<MOLTBOOK_URL>>`
 - X post: `<<X_POST_URL>>`
@@ -156,8 +156,7 @@ Internally, the project is already strong enough for rehearsal and capture.
 
 Externally, we should publish only after:
 
-1. the public repo is live
-2. the Moltbook post is live
-3. the X post is live
-4. the demo video is uploaded
-5. the Google Form is filled with final public links only
+1. the Moltbook post is live
+2. the X post is live
+3. the demo video is uploaded
+4. the Google Form is filled with final public links only
