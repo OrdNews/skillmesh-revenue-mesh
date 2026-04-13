@@ -17,7 +17,7 @@ This is still a good place to be. The hard technical proof work is done. The rem
 
 Fresh audit result:
 
-- local repo is `ahead 2` vs `origin/main`
+- local repo is ahead of `origin/main`
 - public-facing materials still contain unresolved placeholders
 - ignored files are behaving correctly: `.env` and `node_modules/` are not staged for publish
 - tracked-file secret scan passed
@@ -26,7 +26,7 @@ Fresh audit result:
 
 Immediate external blockers now are:
 
-1. push the latest 2 local commits to GitHub
+1. push the latest local commits to GitHub
 2. replace all remaining public placeholders
 3. publish Moltbook and X
 4. record and link the final demo
@@ -96,14 +96,14 @@ The public repo is now live:
 
 What still needs to be completed inside the repo surface:
 
-- push the latest 2 local commits to `origin/main`
+- push the latest local commits to `origin/main`
 - demo video link
 - Moltbook post link
 - X post link
 
 Current repo-state blocker:
 
-- local branch status: `main...origin/main [ahead 2]`
+- local branch status currently shows local commits ahead of `origin/main`
 
 Current placeholder blocker set:
 
@@ -177,7 +177,7 @@ We should keep rehearsing, capturing screenshots, and finalizing public material
 
 Do not publish externally until these are done:
 
-1. latest 2 local commits are pushed to GitHub
+1. latest local commits are pushed to GitHub
 2. all remaining placeholders are replaced with real public links
 3. Moltbook post is live
 4. X launch post is live
