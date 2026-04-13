@@ -1,6 +1,6 @@
 # Launch Audit Report
 
-Updated: 2026-04-12
+Updated: 2026-04-13
 
 ## Verdict
 
@@ -11,7 +11,25 @@ Meaning:
 - the product is strong enough for internal rehearsal and capture
 - the project is not ready for external launch until the public submission surface is finalized
 
-This is a good place to be. The hard technical proof work is mostly done. The remaining risk is presentation consistency.
+This is still a good place to be. The hard technical proof work is done. The remaining risk is now concentrated in release discipline.
+
+## 2026-04-13 Recheck
+
+Fresh audit result:
+
+- local repo is `ahead 1` vs `origin/main`
+- public-facing materials still contain unresolved placeholders
+- ignored files are behaving correctly: `.env` and `node_modules/` are not staged for publish
+- tracked-file secret scan passed
+- local live APIs are healthy
+- proof ledger and canonical artifact resolve correctly
+
+Immediate external blockers now are:
+
+1. push the latest local commit to GitHub
+2. replace all remaining public placeholders
+3. publish Moltbook and X
+4. record and link the final demo
 
 ## What Is Already Strong
 
@@ -78,10 +96,23 @@ The public repo is now live:
 
 What still needs to be completed inside the repo surface:
 
-- demo video
-- Moltbook post
-- X post
-- proof links
+- push the latest local commit to `origin/main`
+- demo video link
+- Moltbook post link
+- X post link
+- team info in the form template
+
+Current repo-state blocker:
+
+- local branch status: `main...origin/main [ahead 1]`
+
+Current placeholder blocker set:
+
+- `README.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
+- `MOLTBOOK_POST.md`: `<<DEMO_URL>>`, `<<X_POST_URL>>`
+- `X_POST.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`
+- `FORM_TEMPLATE.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`, `<<TEAM_INFO>>`
+- `PUBLIC_LINKS.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
 
 ### 2. Moltbook post is not yet published
 
@@ -129,6 +160,7 @@ If we launch now without packaging polish:
 
 - likely strong technically
 - weaker in public judge readability
+- avoid doing this
 
 If we finish the packaging layer cleanly:
 
@@ -146,7 +178,9 @@ We should keep rehearsing, capturing screenshots, and finalizing public material
 
 Do not publish externally until these are done:
 
-1. Moltbook post is live
-2. X launch post is ready
-3. 90-150 second demo script is locked and recorded
-4. Google Form answers are finalized with final links only
+1. latest local commit is pushed to GitHub
+2. all remaining placeholders are replaced with real public links
+3. Moltbook post is live
+4. X launch post is live
+5. 90-150 second demo is recorded and public
+6. Google Form answers are finalized with final links only

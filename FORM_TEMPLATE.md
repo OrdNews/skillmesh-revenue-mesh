@@ -84,7 +84,7 @@ It introduces a self-funding agent organization that can:
 
 ## Team
 
-`<<TEAM_INFO>>`
+`Weihuaw (builder) + Codex (AI engineering copilot)`
 
 ## Final Check Before Submit
 
