@@ -1,0 +1,59 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 420) rotate(90) scale(520)">
+      <stop stop-color="#103A34"/>
+      <stop offset="0.55" stop-color="#0A1115"/>
+      <stop offset="1" stop-color="#05070A"/>
+    </radialGradient>
+    <linearGradient id="ringStroke" x1="236" y1="232" x2="780" y2="788" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9EF8D8"/>
+      <stop offset="0.55" stop-color="#45C8F5"/>
+      <stop offset="1" stop-color="#FF9B5A"/>
+    </linearGradient>
+    <linearGradient id="meshStroke" x1="280" y1="280" x2="760" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9EF8D8"/>
+      <stop offset="0.5" stop-color="#45C8F5"/>
+      <stop offset="1" stop-color="#FF9B5A"/>
+    </linearGradient>
+    <filter id="softGlow" x="143" y="139" width="738" height="746" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="16" result="effect1_foregroundBlur"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" rx="256" fill="url(#bgGlow)"/>
+  <circle cx="512" cy="512" r="326" stroke="url(#ringStroke)" stroke-width="28" opacity="0.92"/>
+  <circle cx="512" cy="512" r="382" stroke="#16333C" stroke-width="2" opacity="0.8"/>
+  <circle cx="512" cy="512" r="408" stroke="#122229" stroke-width="2" opacity="0.65"/>
+
+  <g opacity="0.2">
+    <path d="M248 512H776" stroke="#45C8F5" stroke-width="2"/>
+    <path d="M512 248V776" stroke="#45C8F5" stroke-width="2"/>
+    <path d="M320 320L704 704" stroke="#9EF8D8" stroke-width="2"/>
+    <path d="M704 320L320 704" stroke="#FF9B5A" stroke-width="2"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <path d="M512 312L678 410V610L512 708L346 610V410L512 312Z" stroke="url(#meshStroke)" stroke-width="30" stroke-linejoin="round"/>
+    <path d="M512 312V708" stroke="url(#meshStroke)" stroke-width="22" stroke-linecap="round"/>
+    <path d="M346 410L512 512L678 410" stroke="url(#meshStroke)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M346 610L512 512L678 610" stroke="url(#meshStroke)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g>
+    <circle cx="512" cy="312" r="26" fill="#9EF8D8"/>
+    <circle cx="678" cy="410" r="26" fill="#45C8F5"/>
+    <circle cx="678" cy="610" r="26" fill="#FF9B5A"/>
+    <circle cx="512" cy="708" r="26" fill="#9EF8D8"/>
+    <circle cx="346" cy="610" r="26" fill="#45C8F5"/>
+    <circle cx="346" cy="410" r="26" fill="#FF9B5A"/>
+  </g>
+
+  <g>
+    <rect x="444" y="444" width="136" height="136" rx="34" fill="#071318" stroke="#9EF8D8" stroke-width="12"/>
+    <path d="M478 512H546" stroke="#9EF8D8" stroke-width="14" stroke-linecap="round"/>
+    <path d="M478 554H522" stroke="#45C8F5" stroke-width="14" stroke-linecap="round"/>
+    <path d="M566 470V538" stroke="#FF9B5A" stroke-width="14" stroke-linecap="round"/>
+  </g>
+</svg>

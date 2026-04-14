@@ -2,8 +2,11 @@ node_modules
 .DS_Store
 dist
 .env
+.moltbook-agent.json
 scout-intel-cache.json
 security-scan-cache.json
+public/brand/*.svg.png
+public/brand/*_副本.png
 artifacts/receipts/057ca9b5-375c-40f9-948b-62cd1f5f4ed1.json
 artifacts/receipts/740de0b7-f2f2-4d9c-8460-c99215624e72.json
 artifacts/receipts/b8f336b8-de45-47e5-b17f-5ab2b28b21e3.json

@@ -1,0 +1,63 @@
+<svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerBg" x1="54" y1="44" x2="1452" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#061117"/>
+      <stop offset="0.5" stop-color="#0A1117"/>
+      <stop offset="1" stop-color="#121820"/>
+    </linearGradient>
+    <radialGradient id="leftGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(328 176) rotate(71.199) scale(282.492 355.042)">
+      <stop stop-color="#103A34"/>
+      <stop offset="1" stop-color="#061117" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="154" y1="72" x2="1280" y2="354" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9EF8D8"/>
+      <stop offset="0.55" stop-color="#45C8F5"/>
+      <stop offset="1" stop-color="#FF9B5A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1500" height="500" rx="40" fill="url(#headerBg)"/>
+  <rect width="1500" height="500" rx="40" fill="url(#leftGlow)"/>
+
+  <g opacity="0.44">
+    <path d="M1044 86L1404 126L1264 436L956 404L1044 86Z" stroke="#16333C" stroke-width="2"/>
+    <path d="M1124 112L1362 232L1210 398L984 286L1124 112Z" stroke="#16333C" stroke-width="2"/>
+    <path d="M956 404L1362 232" stroke="#16333C" stroke-width="2"/>
+    <path d="M1044 86L1210 398" stroke="#16333C" stroke-width="2"/>
+    <circle cx="1044" cy="86" r="8" fill="#9EF8D8"/>
+    <circle cx="1404" cy="126" r="8" fill="#45C8F5"/>
+    <circle cx="1264" cy="436" r="8" fill="#FF9B5A"/>
+    <circle cx="956" cy="404" r="8" fill="#9EF8D8"/>
+    <circle cx="1362" cy="232" r="8" fill="#45C8F5"/>
+    <circle cx="1210" cy="398" r="8" fill="#FF9B5A"/>
+  </g>
+
+  <g transform="translate(84 72)">
+    <circle cx="144" cy="144" r="132" stroke="url(#accent)" stroke-width="14"/>
+    <path d="M144 56L222 102V186L144 232L66 186V102L144 56Z" stroke="url(#accent)" stroke-width="15" stroke-linejoin="round"/>
+    <path d="M144 56V232" stroke="url(#accent)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M66 102L144 148L222 102" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66 186L144 148L222 186" stroke="url(#accent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="144" cy="56" r="12" fill="#9EF8D8"/>
+    <circle cx="222" cy="102" r="12" fill="#45C8F5"/>
+    <circle cx="222" cy="186" r="12" fill="#FF9B5A"/>
+    <circle cx="144" cy="232" r="12" fill="#9EF8D8"/>
+    <circle cx="66" cy="186" r="12" fill="#45C8F5"/>
+    <circle cx="66" cy="102" r="12" fill="#FF9B5A"/>
+    <rect x="114" y="114" width="60" height="60" rx="16" fill="#091419" stroke="#9EF8D8" stroke-width="6"/>
+    <path d="M128 144H158" stroke="#9EF8D8" stroke-width="7" stroke-linecap="round"/>
+    <path d="M128 164H146" stroke="#45C8F5" stroke-width="7" stroke-linecap="round"/>
+    <path d="M168 124V154" stroke="#FF9B5A" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(392 118)">
+    <text x="0" y="86" fill="white" font-size="74" font-weight="700" letter-spacing="8" font-family="Avenir Next, Inter, Helvetica, Arial, sans-serif">SKILLMESH</text>
+    <text x="0" y="164" fill="url(#accent)" font-size="74" font-weight="700" letter-spacing="8" font-family="Avenir Next, Inter, Helvetica, Arial, sans-serif">REVENUE MESH</text>
+    <text x="0" y="224" fill="#95A4AF" font-size="24" font-weight="500" letter-spacing="2.2" font-family="IBM Plex Mono, Menlo, monospace">SCOUT INTELLIGENCE. ROUTE CAPITAL. HIRE SPECIALISTS. PROVE EVERY SPEND.</text>
+    <text x="0" y="286" fill="#7D8A93" font-size="18" font-weight="500" letter-spacing="1.8" font-family="IBM Plex Mono, Menlo, monospace">ONCHAIN OPERATING BUDGET SYSTEM FOR SELF-FUNDING AGENT ORGANIZATIONS ON X LAYER</text>
+    <rect x="0" y="326" width="348" height="8" rx="4" fill="#17323A"/>
+    <rect x="0" y="326" width="122" height="8" rx="4" fill="#9EF8D8"/>
+    <rect x="132" y="326" width="96" height="8" rx="4" fill="#45C8F5"/>
+    <rect x="238" y="326" width="110" height="8" rx="4" fill="#FF9B5A"/>
+  </g>
+</svg>

@@ -68,6 +68,70 @@ In the live build, that stack resolves into:
 - `x402` for specialist spend
 - `X Layer` for proof and receipts
 
+## Architecture overview
+
+SkillMesh Revenue Mesh is structured as one onchain organization with a visible operating loop:
+
+1. `Scout` reads OKX market, signal, token, and security context
+2. `Trader` prepares a route-aware execution path
+3. `Treasury` decides whether budget can open
+4. the organization hires one specialist over `x402`
+5. proof and receipt are written back to `X Layer`
+
+System surfaces in this repo:
+
+- `public/`: product UI
+- `server.js`: orchestration and live mission state
+- `lib/`: OKX / x402 / proof helpers
+- `contracts/`: proof contracts
+- `artifacts/receipts/`: canonical mission artifacts
+
+## Deployment and access points
+
+This project does not use a separate public frontend deployment.
+
+Public and deployed surfaces are:
+
+- GitHub repo: `https://github.com/OrdNews/skillmesh-revenue-mesh`
+- X Layer Registry: `0xAe0bCB2181ff57E344D65aFBB6B033acf799d345`
+- X Layer Receipt: `0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3`
+- Local app preview: `http://127.0.0.1:3000`
+
+## Onchain OS / Uniswap usage
+
+### OKX Onchain OS
+
+- `Agentic Wallet`: organization identity and wallet topology
+- `OKX Market`: route and wallet context
+- `OKX Signal + Token`: Scout intelligence
+- `OKX Security`: treasury risk gate
+- `x402`: paid specialist hiring
+
+### Uniswap AI
+
+- route-aware execution planning for the `Trader` lane
+- pay-with-any-token style route logic inside the treasury loop
+
+## Operating mechanism
+
+The live operating path is:
+
+1. `Scout` evaluates whether a treasury lane deserves budget
+2. `Trader` returns the route
+3. the organization spends treasury budget once on a specialist
+4. `Treasury` records mission proof
+5. `Treasury` mints a receipt-backed artifact
+
+This makes the project a visible operating system primitive rather than a generic agent tool.
+
+## Position in the X Layer ecosystem
+
+SkillMesh Revenue Mesh fits X Layer as:
+
+- a budget and proof layer for self-funding agent organizations
+- a live example of `scout -> route -> pay -> prove` on X Layer
+- a product that combines machine spending, public proof, and treasury discipline in one chain-native flow
+
 ## Canonical demo mission
 
 One clean mission is the public demo path:
