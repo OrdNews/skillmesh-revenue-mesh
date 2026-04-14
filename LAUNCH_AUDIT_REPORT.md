@@ -57,9 +57,9 @@ Canonical proof set:
 - Receipt: `0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3`
 - Registry deploy tx: `0x70e2a9a2cbd5e68f380f8f7b080b9baabf9e3dc4fc3de185e7949f0fc767b842`
 - Receipt deploy tx: `0x33f80872d0a53bc20879d491120b9ea4b676b09c2e45bc4bf6cc3fc47f898ebe`
-- Canonical mission proof tx: `0xbdc153b13c48fec7e2da104f90bdf9755d375b48524e6786784c15191469e50c`
-- Canonical receipt mint tx: `0xcfa37406418fd82eae96c254b55032b8fa304ee126be4acca9554b3ef8587268`
-- Canonical specialist settlement tx: `0x9c72cd4131f398f743bf4aa75033a1e42f04202cbf643fe69462d5fdc9678d05`
+- Canonical mission proof tx: `0xedbc9cfc88b6d2348ee517f0b1920e353d2e830cae579622bb694105d54a2105`
+- Canonical receipt mint tx: `0xa290dc1919d5d7ccc3e2d23e8ea7733cc9963f8444be0bdb9a2d43ec0f2bd2eb`
+- Canonical specialist settlement tx: `0xd9449e5693010ba9a23faf5e29f31bb6d84e3439af6d77f2bd1951b4023c70a7`
 
 ### Agent topology
 
@@ -150,8 +150,8 @@ Why this is the best path:
 
 Canonical mission artifact:
 
-- Task id: `5cafdc6f-5aa8-4596-af86-a8fabc8ecd61`
-- Proof artifact: `artifacts/receipts/5cafdc6f-5aa8-4596-af86-a8fabc8ecd61.json`
+- Task id: `20c4707f-ca85-4d0a-8ccf-4e6e54e49a31`
+- Proof artifact: `artifacts/receipts/20c4707f-ca85-4d0a-8ccf-4e6e54e49a31.json`
 
 ## Score Estimate If We Launch After Packaging
 

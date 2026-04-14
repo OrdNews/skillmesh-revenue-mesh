@@ -7,38 +7,112 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">OKX Build X Hackathon Local Prototype</p>
-          <h1>SkillMesh Revenue Mesh</h1>
-          <p class="hero-text">
-            A self-funding agent organization on X Layer: OKX scouts the
-            market, Uniswap-aware routing prepares treasury deployment, x402
-            hires specialist agents, and X Layer anchors the proof.
-          </p>
+    <div class="page-shell">
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+      <div class="ambient ambient-c"></div>
+
+      <header class="masthead">
+        <div class="brand-lockup">
+          <span class="brand-signal"></span>
+          <div>
+            <p class="eyebrow">OKX Build X Hackathon / X Layer Arena</p>
+            <strong class="brand-name">SkillMesh Revenue Mesh</strong>
+          </div>
         </div>
-        <div class="hero-card">
-          <span class="hero-card-label">New thesis</span>
-          <strong>Scout, fund, hire, and prove</strong>
-          <p>
-            This version goes beyond an agent marketplace. The organization
-            first builds operating budget, then spends that budget to hire the
-            right specialists, and leaves judge-visible proof behind.
-          </p>
+        <div class="masthead-rail">
+          <span class="rail-chip">Onchain operating budget system</span>
+          <span class="rail-chip">Live proof-ready</span>
         </div>
       </header>
 
-      <section class="composer">
-        <div class="composer-copy">
-          <h2>Run a demo task</h2>
+      <section class="hero-stage">
+        <div class="hero-poster">
+          <p class="eyebrow">Scout. Route. Hire. Prove.</p>
+          <h1>Self-funding agent operations rendered like a launch poster, not a dashboard.</h1>
+          <p class="hero-text">
+            SkillMesh Revenue Mesh is an onchain operating budget system for self-funding
+            agent organizations. Scout reads treasury context, Trader routes capital, the
+            organization buys specialist intelligence over x402, and Treasury anchors the
+            proof on X Layer.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button link-button" href="#task-form">Launch canonical mission</a>
+            <a
+              class="ghost-button"
+              href="/artifacts/receipts/20c4707f-ca85-4d0a-8ccf-4e6e54e49a31.json"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open canonical proof
+            </a>
+          </div>
+          <div class="hero-sequence">
+            <div class="hero-band">
+              <strong>01</strong>
+              <span>Scout finds treasury context before any budget leaves the organization.</span>
+            </div>
+            <div class="hero-band">
+              <strong>02</strong>
+              <span>Trader prepares a live route so every spend stays capital-aware.</span>
+            </div>
+            <div class="hero-band">
+              <strong>03</strong>
+              <span>Specialists are hired with real x402 settlements, not mock invoicing.</span>
+            </div>
+            <div class="hero-band">
+              <strong>04</strong>
+              <span>Treasury writes receipts and task proof back to X Layer.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-brief">
+          <section class="brief-card">
+            <span class="panel-chip">Canonical thesis</span>
+            <h2>Operating budget over pure tooling</h2>
+            <p>
+              This is not an AI company dashboard and not a generic agent marketplace.
+              It is an operating system for how an autonomous organization earns, allocates,
+              spends, and proves its budget decisions.
+            </p>
+          </section>
+
+          <section class="brief-card">
+            <span class="panel-chip">Proof lane</span>
+            <div class="proof-stamp-list">
+              <div class="proof-stamp">
+                <span>Registry</span>
+                <code>0xAe0b...d345</code>
+              </div>
+              <div class="proof-stamp">
+                <span>Receipt</span>
+                <code>0xbc8c...eAd3</code>
+              </div>
+              <div class="proof-stamp">
+                <span>Mission proof</span>
+                <code>0xedbc...2105</code>
+              </div>
+              <div class="proof-stamp">
+                <span>Specialist settlement</span>
+                <code>0xd944...70a7</code>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="mission-stage">
+        <div class="mission-copy">
+          <p class="eyebrow">Mission console</p>
+          <h2>Run one mission that judges can understand in seconds.</h2>
           <p>
-            Use a task that benefits from treasury scouting, budget-aware route
-            planning, paid specialist hiring, or judge-facing summarization.
-            The orchestrator will activate the right execution lane.
+            The strongest path is simple: scout a treasury opportunity, return a live route,
+            spend one real specialist call, and show the resulting proof stack.
           </p>
         </div>
-        <form id="task-form" class="task-form">
+
+        <form id="task-form" class="task-form mission-form">
           <label class="sr-only" for="task-input">Task input</label>
           <textarea
             id="task-input"
@@ -46,12 +120,12 @@
             rows="4"
             placeholder="Scout a treasury opportunity, plan the best route to fund the operating budget, hire a specialist, then summarize the judge pitch."
           ></textarea>
-          <label class="live-toggle">
-            <input id="live-spend-toggle" type="checkbox" />
-            <span>Enable one real specialist hire for this mission</span>
-          </label>
-          <div class="form-row">
-            <div class="preset-row">
+          <div class="mission-controls">
+            <label class="live-toggle">
+              <input id="live-spend-toggle" type="checkbox" />
+              <span>Enable one real specialist hire for this mission</span>
+            </label>
+            <div class="hero-actions mission-actions">
               <button
                 type="button"
                 class="preset-chip"
@@ -74,187 +148,207 @@
                 Treasury memo
               </button>
             </div>
+          </div>
+          <div class="submit-row">
             <button type="submit" class="primary-button">Start mission</button>
           </div>
         </form>
-      </section>
 
-      <section class="status-strip">
-        <div class="metric-card">
-          <span class="metric-label">Active agents</span>
-          <strong id="metric-workers">0</strong>
-        </div>
-        <div class="metric-card">
-          <span class="metric-label">Execution lane</span>
-          <strong>Scout + Treasury</strong>
-        </div>
-        <div class="metric-card">
-          <span class="metric-label">Hiring rail</span>
-          <strong>x402 budget spend</strong>
-        </div>
-        <div class="metric-card">
-          <span class="metric-label">Task status</span>
-          <strong id="metric-status">Idle</strong>
-        </div>
-        <div class="metric-card">
-          <span class="metric-label">Integration readiness</span>
-          <strong id="metric-ready">0 / 0</strong>
-        </div>
-      </section>
-
-      <main class="dashboard">
-        <section class="panel network-panel">
-          <div class="panel-head">
-            <h2>Agent Network</h2>
-            <span class="panel-chip">Value flow</span>
+        <section class="status-strip">
+          <div class="metric-card">
+            <span class="metric-label">Active agents</span>
+            <strong id="metric-workers">0</strong>
           </div>
-          <div id="network-grid" class="network-grid"></div>
-          <div id="network-flow" class="flow-strip"></div>
-        </section>
-
-        <section class="panel stack-panel">
-          <div class="panel-head">
-            <h2>Execution Stack</h2>
-            <span class="panel-chip">Protocol layers</span>
+          <div class="metric-card">
+            <span class="metric-label">Execution lane</span>
+            <strong>Scout + Treasury</strong>
           </div>
-          <div id="stack" class="stack-list empty-state">
-            <p>Protocol stack details will load here.</p>
+          <div class="metric-card">
+            <span class="metric-label">Hiring rail</span>
+            <strong>x402 budget spend</strong>
           </div>
-          <div id="strategy" class="strategy-card empty-state">
-            <p>Start a workflow to see the current strategy snapshot.</p>
+          <div class="metric-card">
+            <span class="metric-label">Task status</span>
+            <strong id="metric-status">Idle</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Integration readiness</span>
+            <strong id="metric-ready">0 / 0</strong>
           </div>
         </section>
+      </section>
 
-        <section class="panel evidence-panel">
-          <div class="panel-head">
-            <h2>Execution Evidence</h2>
-            <span class="panel-chip">API + tx trace</span>
-          </div>
-          <div id="transactions" class="tx-list empty-state">
-            <p>Evidence entries will appear here as the protocol lane advances.</p>
-          </div>
+      <main class="workspace">
+        <section class="workspace-column workspace-primary">
+          <section class="panel panel-feature stack-panel">
+            <div class="panel-head">
+              <h2>Execution stack</h2>
+              <span class="panel-chip">Protocol layers</span>
+            </div>
+            <div id="stack" class="stack-list empty-state">
+              <p>Protocol stack details will load here.</p>
+            </div>
+            <div id="strategy" class="strategy-card empty-state">
+              <p>Start a workflow to see the current strategy snapshot.</p>
+            </div>
+          </section>
+
+          <section class="panel pipeline-panel">
+            <div class="panel-head">
+              <h2>Mission timeline</h2>
+              <span class="panel-chip">Execution trace</span>
+            </div>
+            <div id="pipeline" class="pipeline-list empty-state">
+              <p>No workflow running yet. Launch a task to watch the orchestration path.</p>
+            </div>
+          </section>
+
+          <section class="panel output-panel">
+            <div class="panel-head">
+              <h2>Judge memo</h2>
+              <span class="panel-chip">Organization delivery</span>
+            </div>
+            <pre id="final-output" class="output-card empty-state">Results from Scout, Trader, and the specialist workers will land here.</pre>
+          </section>
+        </section>
+
+        <section class="workspace-column workspace-middle">
+          <section class="panel network-panel">
+            <div class="panel-head">
+              <h2>Organization graph</h2>
+              <span class="panel-chip">Value flow</span>
+            </div>
+            <div id="network-grid" class="network-grid"></div>
+            <div id="network-flow" class="flow-strip"></div>
+          </section>
+
+          <section class="panel org-panel">
+            <div class="panel-head">
+              <h2>Organization wallets</h2>
+              <span class="panel-chip">Live treasury topology</span>
+            </div>
+            <div id="org-wallets" class="org-list empty-state">
+              <p>Organization wallets will appear here after the app loads.</p>
+            </div>
+          </section>
+
+          <section class="panel balances-panel">
+            <div class="panel-head">
+              <h2>Value delta</h2>
+              <span class="panel-chip">Before / after</span>
+            </div>
+            <div id="balances" class="balances-list empty-state">
+              <p>Run a workflow to compare agent balances before and after settlement.</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="workspace-column workspace-side">
+          <section class="panel evidence-panel">
+            <div class="panel-head">
+              <h2>Evidence corridor</h2>
+              <span class="panel-chip">API + tx trace</span>
+            </div>
+            <div id="transactions" class="tx-list empty-state">
+              <p>Evidence entries will appear here as the protocol lane advances.</p>
+            </div>
+          </section>
+
+          <section class="panel opportunity-panel">
+            <div class="panel-head">
+              <h2>Treasury radar</h2>
+              <span class="panel-chip">Best mission lanes</span>
+            </div>
+            <div id="opportunities" class="opportunities-list empty-state">
+              <p>Opportunity lanes will appear here after the app loads.</p>
+            </div>
+          </section>
+
+          <section class="panel scout-panel">
+            <div class="panel-head">
+              <h2>Scout intelligence</h2>
+              <span class="panel-chip">Signal + structure board</span>
+            </div>
+            <div id="scout-intel" class="intel-card empty-state">
+              <p>Scout token structure and signal flow will appear here after the app loads.</p>
+            </div>
+          </section>
+
+          <section class="panel risk-panel">
+            <div class="panel-head">
+              <h2>Risk gate</h2>
+              <span class="panel-chip">OKX Security verdict</span>
+            </div>
+            <div id="risk-gate" class="risk-card empty-state">
+              <p>Security findings will appear here after the app loads.</p>
+            </div>
+          </section>
+
+          <section class="panel receipt-panel">
+            <div class="panel-head">
+              <h2>Receipt</h2>
+              <span class="panel-chip">Final proof</span>
+            </div>
+            <div id="receipt" class="receipt-card empty-state">
+              <p>No receipt minted yet. Complete a workflow to see the final artifact.</p>
+            </div>
+          </section>
+
+          <section class="panel proof-panel">
+            <div class="panel-head">
+              <h2>Specialist purchases</h2>
+              <span class="panel-chip">Live x402 settlements</span>
+            </div>
+            <div class="purchase-toolbar">
+              <div class="hero-actions mission-actions">
+                <button type="button" class="preset-chip live-purchase-button" data-live-worker="summarizer">
+                  Hire Summarizer
+                </button>
+                <button type="button" class="preset-chip live-purchase-button" data-live-worker="translator">
+                  Hire Translator
+                </button>
+                <button type="button" class="preset-chip live-purchase-button" data-live-worker="codeReviewer">
+                  Hire CodeReviewer
+                </button>
+              </div>
+              <p id="purchase-status" class="purchase-status">No live specialist purchase has been triggered from the dashboard yet.</p>
+            </div>
+            <div id="live-purchases" class="proof-list empty-state">
+              <p>Live specialist purchases will appear here after the first settlement lands.</p>
+            </div>
+          </section>
+
+          <section class="panel proof-panel">
+            <div class="panel-head">
+              <h2>Proof ledger</h2>
+              <span class="panel-chip">Registry + receipt writes</span>
+            </div>
+            <div id="proof-ledger" class="proof-list empty-state">
+              <p>Proof registrations and task writes will appear here after the proof layer is connected.</p>
+            </div>
+          </section>
+
+          <section class="panel readiness-panel">
+            <div class="panel-head">
+              <h2>Integration readiness</h2>
+              <span class="panel-chip">Live mode checklist</span>
+            </div>
+            <div id="readiness" class="readiness-list empty-state">
+              <p>Environment checks will appear here after the app loads.</p>
+            </div>
+          </section>
+
+          <section class="panel proof-panel">
+            <div class="panel-head">
+              <h2>Funding proof</h2>
+              <span class="panel-chip">Seed round tx trail</span>
+            </div>
+            <div id="funding-proof" class="proof-list empty-state">
+              <p>Seed funding transfers will appear here after the app loads.</p>
+            </div>
+          </section>
         </section>
       </main>
-
-      <section class="secondary-grid">
-        <section class="panel pipeline-panel">
-          <div class="panel-head">
-            <h2>Pipeline</h2>
-            <span class="panel-chip">Execution trace</span>
-          </div>
-          <div id="pipeline" class="pipeline-list empty-state">
-            <p>No workflow running yet. Launch a task to watch the orchestration path.</p>
-          </div>
-        </section>
-
-        <section class="panel opportunity-panel">
-          <div class="panel-head">
-            <h2>Treasury Radar</h2>
-            <span class="panel-chip">Best mission lanes</span>
-          </div>
-          <div id="opportunities" class="opportunities-list empty-state">
-            <p>Opportunity lanes will appear here after the app loads.</p>
-          </div>
-        </section>
-      </section>
-
-      <section class="receipt-grid">
-        <section class="panel receipt-panel">
-          <div class="panel-head">
-            <h2>Receipt</h2>
-            <span class="panel-chip">Final proof</span>
-          </div>
-          <div id="receipt" class="receipt-card empty-state">
-            <p>No receipt minted yet. Complete a workflow to see the final artifact.</p>
-          </div>
-        </section>
-
-        <section class="panel output-panel">
-          <div class="panel-head">
-            <h2>Final memo</h2>
-            <span class="panel-chip">Organization delivery</span>
-          </div>
-          <pre id="final-output" class="output-card empty-state">Results from Scout, Trader, and the specialist workers will land here.</pre>
-        </section>
-      </section>
-
-      <section class="ops-grid">
-        <section class="panel balances-panel">
-          <div class="panel-head">
-            <h2>Value Delta</h2>
-            <span class="panel-chip">Before / after</span>
-          </div>
-          <div id="balances" class="balances-list empty-state">
-            <p>Run a workflow to compare agent balances before and after settlement.</p>
-          </div>
-        </section>
-
-        <section class="panel readiness-panel">
-          <div class="panel-head">
-            <h2>Integration Readiness</h2>
-            <span class="panel-chip">Live mode checklist</span>
-          </div>
-          <div id="readiness" class="readiness-list empty-state">
-            <p>Environment checks will appear here after the app loads.</p>
-          </div>
-        </section>
-      </section>
-
-      <section class="ops-grid">
-        <section class="panel org-panel">
-          <div class="panel-head">
-            <h2>Organization Wallets</h2>
-            <span class="panel-chip">Live treasury topology</span>
-          </div>
-          <div id="org-wallets" class="org-list empty-state">
-            <p>Organization wallets will appear here after the app loads.</p>
-          </div>
-        </section>
-
-        <section class="panel proof-panel">
-          <div class="panel-head">
-            <h2>Funding Proof</h2>
-            <span class="panel-chip">Seed round tx trail</span>
-          </div>
-          <div id="funding-proof" class="proof-list empty-state">
-            <p>Seed funding transfers will appear here after the app loads.</p>
-          </div>
-        </section>
-
-        <section class="panel proof-panel">
-          <div class="panel-head">
-            <h2>Specialist Purchases</h2>
-            <span class="panel-chip">Live x402 settlements</span>
-          </div>
-          <div class="purchase-toolbar">
-            <div class="preset-row">
-              <button type="button" class="preset-chip live-purchase-button" data-live-worker="summarizer">
-                Hire Summarizer
-              </button>
-              <button type="button" class="preset-chip live-purchase-button" data-live-worker="translator">
-                Hire Translator
-              </button>
-              <button type="button" class="preset-chip live-purchase-button" data-live-worker="codeReviewer">
-                Hire CodeReviewer
-              </button>
-            </div>
-            <p id="purchase-status" class="purchase-status">No live specialist purchase has been triggered from the dashboard yet.</p>
-          </div>
-          <div id="live-purchases" class="proof-list empty-state">
-            <p>Live specialist purchases will appear here after the first settlement lands.</p>
-          </div>
-        </section>
-
-        <section class="panel proof-panel">
-          <div class="panel-head">
-            <h2>Proof Ledger</h2>
-            <span class="panel-chip">Registry + receipt writes</span>
-          </div>
-          <div id="proof-ledger" class="proof-list empty-state">
-            <p>Proof registrations and task writes will appear here after the proof layer is connected.</p>
-          </div>
-        </section>
-      </section>
     </div>
 
     <script src="/app.js" defer></script>

@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 const { execFile } = require("child_process");
-const { getLiveExecutionContext } = require("./lib/live-okx");
+const { getLiveExecutionContext, getLiveRiskGate, getLiveScoutIntel } = require("./lib/live-okx");
 const { buildTaskProofHash } = require("./lib/proof-contracts");
 const { readProofDeployment } = require("./lib/proof-deployments");
 const {
@@ -391,6 +391,45 @@ function formatUsd(value) {
   return `$${value.toFixed(3)} ${PAYMENT_SYMBOL}`;
 }
 
+function toNullableNumber(value, digits = null) {
+  if (value == null || value === "") {
+    return null;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) {
+    return null;
+  }
+
+  return digits == null ? parsed : Number(parsed.toFixed(digits));
+}
+
+function formatCompactUsd(value) {
+  const amount = toNullableNumber(value);
+  if (amount == null) {
+    return "n/a";
+  }
+
+  if (amount >= 1_000_000_000) {
+    return `$${(amount / 1_000_000_000).toFixed(2)}B`;
+  }
+
+  if (amount >= 1_000_000) {
+    return `$${(amount / 1_000_000).toFixed(2)}M`;
+  }
+
+  if (amount >= 1_000) {
+    return `$${(amount / 1_000).toFixed(2)}K`;
+  }
+
+  return `$${amount.toFixed(2)}`;
+}
+
+function formatPercent(value) {
+  const parsed = toNullableNumber(value, 2);
+  return parsed == null ? "n/a" : `${parsed}%`;
+}
+
 function createHash() {
   return `0x${crypto.randomBytes(32).toString("hex")}`;
 }
@@ -442,6 +481,22 @@ function copyAgentList(agentList) {
 
 function getTaskAgent(task, agentId) {
   return task.runtimeAgents.find((agent) => agent.id === agentId);
+}
+
+function getTaskRiskGate(task) {
+  return task?.riskGate || task?.liveContext?.riskGate || null;
+}
+
+function getTaskScoutIntel(task) {
+  return task?.scoutIntel || task?.liveContext?.scoutIntel || null;
+}
+
+function shouldHaltForRiskGate(riskGate) {
+  return Boolean(riskGate && ["block", "warn", "degraded"].includes(riskGate.status));
+}
+
+function shouldHaltForScoutIntel(scoutIntel) {
+  return Boolean(scoutIntel?.verdict?.lane === "review");
 }
 
 function readAgentCard(agentId) {
@@ -599,6 +654,8 @@ function buildLiveSummary(snapshot, error = null, orgSnapshots = {}) {
     updatedAt: snapshot?.updatedAt || null,
     wallet: snapshot?.wallet || null,
     quote: snapshot?.quote || null,
+    riskGate: snapshot?.riskGate || null,
+    scoutIntel: snapshot?.scoutIntel || null,
     organization: buildOrganizationSummary(orgSnapshots),
     x402: buildX402Summary(),
     proof: buildProofSummary(),
@@ -622,7 +679,8 @@ async function refreshOrgContext(options = {}) {
     for (const agent of AGENTS.filter((entry) => entry.accountId)) {
       snapshots[agent.id] = await getLiveExecutionContext({
         accountId: agent.accountId,
-        includeQuote: agent.id === "trader"
+        includeQuote: agent.id === "trader",
+        includeScoutIntel: false
       });
     }
 
@@ -663,6 +721,22 @@ async function refreshLiveContext(input = "", options = {}) {
     LIVE_CONTEXT.error = error;
     if (LIVE_CONTEXT.snapshot) {
       return LIVE_CONTEXT.snapshot;
+    }
+    try {
+      const riskGate = await getLiveRiskGate({});
+      const scoutIntel = await getLiveScoutIntel({ riskGate });
+      const fallback = {
+        updatedAt: new Date().toISOString(),
+        wallet: null,
+        quote: null,
+        riskGate,
+        scoutIntel
+      };
+      LIVE_CONTEXT.snapshot = fallback;
+      LIVE_CONTEXT.refreshedAt = Date.now();
+      return fallback;
+    } catch (riskError) {
+      LIVE_CONTEXT.error = riskError;
     }
     return null;
   }
@@ -748,7 +822,8 @@ function buildTaskPlan(input, selectedWorkers, intent) {
   const lane = selectedWorkers.map((worker) => worker.name).join(" -> ");
   return [
     `Normalize user intent from: "${input}"`,
-    `Scout market context with OKX capabilities before any treasury spend decisions.`,
+    "Scout market structure, signal flow, and target concentration with OKX capabilities before any treasury spend decisions.",
+    "Run the OKX Security risk gate before routing capital or opening the specialist payment lane.",
     `Plan the execution lane: ${lane}.`,
     intent.trade
       ? "Use Trader to compare route candidates and prepare a swap-friendly path that can strengthen or preserve the operating budget."
@@ -770,14 +845,41 @@ function getProtocolStack() {
     xlayerReady &&
     readyIds.has("registry-address") &&
     readyIds.has("receipt-address");
+  const liveRiskGate = LIVE_CONTEXT.snapshot?.riskGate || null;
+  const liveScoutIntel = LIVE_CONTEXT.snapshot?.scoutIntel || null;
+  let securityStatus = "armed";
+  if (liveRiskGate?.status === "pass") {
+    securityStatus = "primed";
+  } else if (liveRiskGate?.status === "warn" || liveRiskGate?.status === "degraded") {
+    securityStatus = "review";
+  } else if (liveRiskGate?.status === "block") {
+    securityStatus = "blocked";
+  }
+
+  let marketStatus = okxAuth ? "primed" : "setup";
+  let marketSummary = "Token discovery, price snapshots, signal readouts, and wallet-aware market context.";
+  if (liveScoutIntel?.verdict?.lane === "watch" || liveScoutIntel?.verdict?.lane === "review") {
+    marketStatus = "review";
+    marketSummary = liveScoutIntel.verdict.summary;
+  } else if (liveScoutIntel?.verdict?.lane === "budget-ready") {
+    marketStatus = "primed";
+    marketSummary = liveScoutIntel.verdict.summary;
+  }
 
   return [
     {
       id: "okx-market",
       label: "OKX Market Intelligence",
       owner: "Scout",
-      status: okxAuth ? "primed" : "setup",
-      summary: "Token discovery, price snapshots, and wallet-aware market context."
+      status: marketStatus,
+      summary: marketSummary
+    },
+    {
+      id: "okx-security",
+      label: "OKX Security Risk Gate",
+      owner: "Scout + Treasury",
+      status: securityStatus,
+      summary: "Token safety screening that can pause route execution and treasury spend before the organization commits capital."
     },
     {
       id: "okx-trade",
@@ -810,22 +912,39 @@ function getProtocolStack() {
   ];
 }
 
-function getOpportunityRadar(input = "") {
+function getOpportunityRadar(input = "", scoutIntel = LIVE_CONTEXT.snapshot?.scoutIntel || null) {
   const intent = analyzeIntent(input);
+  const scoutLane = scoutIntel?.verdict?.lane || "watch";
+  const leadSignal = scoutIntel?.signals?.topSignals?.[0] || null;
+  const targetSymbol = scoutIntel?.target?.symbol || "target";
   return [
     {
       id: "service-funding",
       title: "Self-Funding Loop",
-      status: intent.payAnyToken || intent.trade ? "focus" : "armed",
+      status: scoutLane === "budget-ready" ? (intent.payAnyToken || intent.trade ? "focus" : "armed") : scoutLane,
       route: "Scout opportunity -> route treasury capital -> hire specialists -> keep the swarm funded",
-      thesis: "Turn treasury assets into operating budget, then spend that budget on specialist intelligence."
+      thesis:
+        scoutLane === "budget-ready"
+          ? `Scout currently grades ${targetSymbol} as budget-ready, so treasury can convert reserves into operating budget.`
+          : "Turn treasury assets into operating budget only after Scout and Security justify the lane."
     },
     {
       id: "alpha-lane",
       title: "Treasury Expansion Lane",
-      status: intent.trade ? "focus" : "watch",
-      route: "OKX market read -> route comparison -> swap-ready execution",
-      thesis: "Let Scout and Trader convert raw market context into a capital move the organization can justify."
+      status: scoutLane === "review" ? "review" : intent.trade ? "focus" : "watch",
+      route: "OKX market read -> security gate -> route comparison -> swap-ready execution",
+      thesis: scoutIntel?.verdict?.summary || "Let Scout, Security, and Trader convert raw market context into a capital move the organization can justify."
+    },
+    {
+      id: "signal-lane",
+      title: "Signal Board Lane",
+      status: scoutIntel?.signals?.matchedTarget ? "focus" : leadSignal ? "watch" : "armed",
+      route: "X Layer signal board -> target match check -> treasury watchlist",
+      thesis: scoutIntel?.signals?.matchedTarget
+        ? `${targetSymbol} already appears on the live X Layer signal board.`
+        : leadSignal
+          ? `No direct ${targetSymbol} match yet; the current board leader is ${leadSignal.symbol}.`
+          : "Signal board is quiet, so Scout relies on structure rather than flow."
     },
     {
       id: "proof-lane",
@@ -837,9 +956,9 @@ function getOpportunityRadar(input = "") {
   ];
 }
 
-function buildStrategy(input, selectedWorkers, intent) {
+function buildStrategy(input, selectedWorkers, intent, scoutIntel = LIVE_CONTEXT.snapshot?.scoutIntel || null) {
   const paidWorkers = selectedWorkers.filter((worker) => worker.price != null);
-  const protocols = ["OKX Market", "OKX Trade", "Uniswap AI", "x402", "X Layer"];
+  const protocols = ["OKX Market", "OKX Security", "OKX Trade", "Uniswap AI", "x402", "X Layer"];
   const executionLane = selectedWorkers.map((worker) => worker.name).join(" -> ");
 
   return {
@@ -854,7 +973,13 @@ function buildStrategy(input, selectedWorkers, intent) {
     routePolicy: intent.trade
       ? "Trader compares OKX trade context with Uniswap AI routing before any treasury deployment."
       : "Trader keeps a pay-with-any-token fallback ready so the organization can keep buying capability on asset mismatch.",
-    budgetPolicy: "Only spend treasury budget after Scout and Trader produce enough context to justify the purchase.",
+    scoutPolicy:
+      scoutIntel?.verdict?.summary ||
+      "Scout must validate target structure, signal flow, and concentration before budget opens.",
+    budgetPolicy:
+      "Only spend treasury budget after Scout reaches at least watch mode, OKX Security grants a clean pass, and Trader produces a route worth executing.",
+    riskPolicy:
+      "OKX Security is a mandatory gate. If the scan blocks, warns, or degrades without a clean cached result, the mission must preserve treasury budget and halt external spend.",
     treasuryLoop: "Scout -> Route -> Fund -> Hire -> Prove",
     proofPolicy: "Treasury records why budget was spent, who was hired, and what proof artifact was produced on X Layer.",
     protocols
@@ -887,13 +1012,20 @@ function addTransaction(task, partial) {
 function buildWorkerOutput(workerId, input, task) {
   const compact = input.replace(/\s+/g, " ").trim();
   const traderQuote = task.liveContext?.quote || task.orgSnapshots?.trader?.quote || null;
+  const scoutIntel = getTaskScoutIntel(task);
 
   if (workerId === "scout") {
-    if (task.liveContext?.wallet) {
-      const holdings = task.liveContext.wallet.tokens
-        .map((token) => `${token.balance} ${token.symbol}`)
-        .join(", ");
-      return `OKX scout readout: live treasury wallet detected at ${task.liveContext.wallet.address}. Current operating reserves: ${holdings}.`;
+    if (scoutIntel?.target) {
+      const leadSignal = scoutIntel.signals?.topSignals?.[0];
+      return `OKX scout readout: ${scoutIntel.target.symbol} is ${scoutIntel.verdict?.lane || "review"} with ${formatCompactUsd(
+        scoutIntel.target.liquidityUsd
+      )} liquidity, ${formatCompactUsd(scoutIntel.target.volume24hUsd)} 24h volume, risk level ${
+        scoutIntel.target.riskControlLevel ?? "n/a"
+      }, and top-10 concentration ${formatPercent(scoutIntel.target.top10HoldPercent)}. ${
+        leadSignal
+          ? `Signal board leader: ${leadSignal.symbol} via ${leadSignal.walletTypeLabel}.`
+          : "Signal board is currently quiet."
+      }`;
     }
 
     return "OKX scout readout: market context is attached, the treasury loop is viable, and the orchestrator can proceed with a route-aware spend plan.";
@@ -923,11 +1055,25 @@ function buildWorkerOutput(workerId, input, task) {
 
 function buildFinalOutput(task) {
   const livePurchases = getRelatedLivePurchases(task);
+  const riskGate = getTaskRiskGate(task);
+  const scoutIntel = getTaskScoutIntel(task);
+  const leadSignal = scoutIntel?.signals?.topSignals?.[0] || null;
   return [
     `Strategy: ${task.strategy.headline}`,
     `Execution lane: ${task.strategy.executionLane}`,
     `Budget policy: ${task.strategy.paymentPolicy}`,
+    `Scout lane: ${
+      scoutIntel
+        ? `${scoutIntel.verdict.lane.toUpperCase()} — ${scoutIntel.verdict.summary}`
+        : "No live Scout intelligence attached."
+    }`,
+    `Risk gate: ${riskGate ? `${riskGate.status.toUpperCase()} — ${riskGate.summary}` : "No live risk gate attached."}`,
     `Treasury loop: ${task.strategy.treasuryLoop}`,
+    leadSignal
+      ? `Lead signal board entry: ${leadSignal.symbol} via ${leadSignal.walletTypeLabel} (${formatCompactUsd(
+          leadSignal.amountUsd
+        )}, sold ratio ${formatPercent(leadSignal.soldRatioPercent)}).`
+      : "Lead signal board entry: no active X Layer signal attached.",
     "",
     ...task.workerOutputs.map((output) => `${output.workerName}: ${output.result}`),
     "",
@@ -963,6 +1109,8 @@ function buildReceiptExport(task) {
     strategy: task.strategy,
     stack: task.stack,
     opportunities: task.opportunities,
+    scoutIntel: task.scoutIntel,
+    riskGate: task.riskGate,
     liveSpendRequested: task.liveSpendRequested,
     liveSpendTargetId: task.liveSpendTargetId,
     steps: task.steps,
@@ -990,6 +1138,11 @@ function simulateTask(task) {
   const treasury = getTaskAgent(task, "treasury");
   const scout = getTaskAgent(task, "scout");
   const trader = getTaskAgent(task, "trader");
+  const scoutIntel = getTaskScoutIntel(task);
+  const riskGate = getTaskRiskGate(task);
+  const scoutBlocksSpend = shouldHaltForScoutIntel(scoutIntel);
+  const riskBlocksSpend = shouldHaltForRiskGate(riskGate);
+  const treasurySpendBlocked = scoutBlocksSpend || riskBlocksSpend;
   const timeline = [];
 
   timeline.push(() => {
@@ -1033,7 +1186,69 @@ function simulateTask(task) {
     });
   });
 
-  if (task.selectedWorkerIds.includes("trader")) {
+  timeline.push(() => {
+    const target = scoutIntel?.target;
+    const leadSignal = scoutIntel?.signals?.topSignals?.[0] || null;
+    const scoutEvent = addTransaction(task, {
+      type: "intelligence",
+      label: target ? `Scout intelligence board for ${target.symbol}` : "Scout intelligence board",
+      amount: scoutIntel ? scoutIntel.verdict.lane.toUpperCase() : "no intel",
+      from: scout.wallet,
+      to: "OKX Signal + Token",
+      network: "OKX Signal",
+      explorerUrl: "https://web3.okx.com/onchainos/dev-docs/home/skills-mcp-services",
+      linkLabel: "signal docs",
+      mock: scoutIntel?.cached === true
+    });
+
+    addStep(task, {
+      type: "market",
+      title: scoutBlocksSpend ? "Scout kept the treasury lane in review" : "Scout graded the treasury lane",
+      detail: scoutIntel
+        ? `${scoutIntel.verdict.summary} Target ${target.symbol} holds ${formatCompactUsd(
+            target.liquidityUsd
+          )} liquidity, ${formatCompactUsd(target.volume24hUsd)} 24h volume, risk level ${
+            target.riskControlLevel ?? "n/a"
+          }, top-10 concentration ${formatPercent(target.top10HoldPercent)}. ${
+            leadSignal
+              ? `Board leader: ${leadSignal.symbol} via ${leadSignal.walletTypeLabel} for ${formatCompactUsd(
+                  leadSignal.amountUsd
+                )}.`
+              : "Signal board is quiet."
+          } Evidence id: ${scoutEvent.hash.slice(0, 12)}...`
+        : "No Scout intelligence payload was attached to this mission."
+    });
+  });
+
+  timeline.push(() => {
+    const findings = riskGate?.findings || [];
+    const targetList = (riskGate?.targets || []).map((target) => `${target.symbol} (${target.role})`).join(", ");
+    const securityTx = addTransaction(task, {
+      type: "security",
+      label: "OKX Security token scan",
+      amount: riskGate ? riskGate.status.toUpperCase() : "no scan",
+      from: scout.wallet,
+      to: "OKX Security",
+      network: "OKX Security",
+      explorerUrl: "https://web3.okx.com/onchainos/dev-docs/home/skills-mcp-services",
+      linkLabel: "security docs",
+      mock: riskGate?.source !== "okx-security"
+    });
+
+    addStep(task, {
+      type: "risk",
+      title: riskBlocksSpend ? "Risk gate held treasury spend" : "Risk gate cleared treasury spend",
+      detail: riskGate
+        ? `${riskGate.summary} Targets: ${targetList || "none"}. Findings: ${
+            findings.length
+              ? findings.map((entry) => `${entry.symbol} ${entry.flags.join(", ") || "supported"}`).join(" | ")
+              : "no high-risk flags"
+          }. Evidence id: ${securityTx.hash.slice(0, 12)}...`
+        : "No OKX Security result was attached to this mission."
+      });
+  });
+
+  if (!treasurySpendBlocked && task.selectedWorkerIds.includes("trader")) {
     timeline.push(() => {
       const quote = task.liveContext?.quote || task.orgSnapshots?.trader?.quote || null;
       const routeDetail = quote?.route.map((item) => item.dexName).join(" -> ");
@@ -1071,7 +1286,7 @@ function simulateTask(task) {
     });
   }
 
-  if (task.intent.trade) {
+  if (!treasurySpendBlocked && task.intent.trade) {
     timeline.push(() => {
       const quote = task.liveContext?.quote || task.orgSnapshots?.trader?.quote || null;
       addTransaction(task, {
@@ -1095,46 +1310,65 @@ function simulateTask(task) {
     });
   }
 
-  paidWorkers.forEach((worker) => {
-    timeline.push(() => {
-      const amount = worker.price || 0;
-      orchestrator.balance = Number((orchestrator.balance - amount).toFixed(3));
-      worker.balance = Number((worker.balance + amount).toFixed(3));
+  if (!treasurySpendBlocked) {
+    paidWorkers.forEach((worker) => {
+      timeline.push(() => {
+        const amount = worker.price || 0;
+        orchestrator.balance = Number((orchestrator.balance - amount).toFixed(3));
+        worker.balance = Number((worker.balance + amount).toFixed(3));
 
-      task.workerOutputs.push({
-        workerId: worker.id,
-        workerName: worker.name,
-        cardUrl: worker.metadataPath,
-        paymentAmount: formatUsd(amount),
-        result: buildWorkerOutput(worker.id, task.input, task)
-      });
+        task.workerOutputs.push({
+          workerId: worker.id,
+          workerName: worker.name,
+          cardUrl: worker.metadataPath,
+          paymentAmount: formatUsd(amount),
+          result: buildWorkerOutput(worker.id, task.input, task)
+        });
 
-      const paymentTx = addTransaction(task, {
-        type: "payment",
-        label: `${worker.name} x402 settlement`,
-        amount: formatUsd(amount),
-        from: orchestrator.wallet,
-        to: worker.wallet,
-        explorerUrl: `https://www.oklink.com/xlayer/tx/${createHash()}`,
-        linkLabel: "mock explorer"
-      });
+        const paymentTx = addTransaction(task, {
+          type: "payment",
+          label: `${worker.name} x402 settlement`,
+          amount: formatUsd(amount),
+          from: orchestrator.wallet,
+          to: worker.wallet,
+          explorerUrl: `https://www.oklink.com/xlayer/tx/${createHash()}`,
+          linkLabel: "mock explorer"
+        });
 
-      addStep(task, {
-        type: "worker",
-        title: `${worker.name} finished execution`,
-        detail: `Spent ${formatUsd(amount)} from treasury over x402 and received a ${worker.skill} payload back into the organization.`
-      });
+        addStep(task, {
+          type: "worker",
+          title: `${worker.name} finished execution`,
+          detail: `Spent ${formatUsd(amount)} from treasury over x402 and received a ${worker.skill} payload back into the organization.`
+        });
 
-      task.payments.push({
-        workerId: worker.id,
-        workerName: worker.name,
-        amount: formatUsd(amount),
-        txHash: paymentTx.hash
+        task.payments.push({
+          workerId: worker.id,
+          workerName: worker.name,
+          amount: formatUsd(amount),
+          txHash: paymentTx.hash
+        });
       });
     });
-  });
+  } else {
+    timeline.push(() => {
+      const haltReasons = [];
+      if (scoutBlocksSpend) {
+        haltReasons.push("Scout intelligence did not clear the treasury lane");
+      }
+      if (riskBlocksSpend) {
+        haltReasons.push("OKX Security did not return a clean pass");
+      }
+      addStep(task, {
+        type: "risk",
+        title: "Mission converted into a hold-only proof",
+        detail: `The organization kept its treasury intact because ${haltReasons.join(
+          " and "
+        )}. No external specialist spend or route execution was allowed.`
+      });
+    });
+  }
 
-  if (task.liveSpendRequested && task.liveSpendTargetId) {
+  if (!treasurySpendBlocked && task.liveSpendRequested && task.liveSpendTargetId) {
     timeline.push(async () => {
       const targetWorker = getTaskAgent(task, task.liveSpendTargetId);
 
@@ -1205,7 +1439,7 @@ function simulateTask(task) {
     const completionTx = addTransaction(task, {
       type: "contract",
       label: "SkillMeshRegistry.recordTaskCompletion",
-      amount: "proof event",
+      amount: riskBlocksSpend ? "risk hold proof" : "proof event",
       from: treasury.wallet,
       to: "SkillMeshRegistry",
       explorerUrl: `https://www.oklink.com/xlayer/tx/${createHash()}`,
@@ -1215,7 +1449,9 @@ function simulateTask(task) {
     addStep(task, {
       type: "treasury",
       title: "Treasury recorded task completion",
-      detail: "Recorded why treasury budget was deployed, which agents were hired, and what proof path the organization produced."
+      detail: riskBlocksSpend
+        ? "Recorded that the risk gate preserved treasury budget and turned the mission into an auditable hold-only proof."
+        : "Recorded why treasury budget was deployed, which agents were hired, and what proof path the organization produced."
     });
 
     task.completionTxHash = completionTx.hash;
@@ -1242,7 +1478,9 @@ function simulateTask(task) {
       workerCount: paidWorkers.length,
       agentCount: task.selectedWorkerIds.length + 2,
       protocolLane: task.strategy.protocols.join(" -> "),
-      thesis: task.strategy.headline,
+      thesis: treasurySpendBlocked
+        ? "Scout or Security blocked autonomous treasury deployment, so the organization produced a proof-first hold instead of a spend."
+        : task.strategy.headline,
       taskHash: task.proofTaskHash,
       receiptTxHash: receiptTx.hash,
       completionTxHash: task.completionTxHash,
@@ -1259,11 +1497,13 @@ function simulateTask(task) {
     task.finalOutput = buildFinalOutput(task);
     writeReceiptArtifact(task);
 
-    addStep(task, {
-      type: "receipt",
-      title: "Receipt prepared for final delivery",
-      detail: "The dashboard can now show treasury usage, hired specialists, payout proofs, and a final exportable artifact."
-    });
+      addStep(task, {
+        type: "receipt",
+        title: "Receipt prepared for final delivery",
+        detail: treasurySpendBlocked
+          ? "The dashboard can now show that the mission ended in a protected hold, including the Scout verdict, the security gate, and the proof artifact."
+          : "The dashboard can now show treasury usage, hired specialists, payout proofs, and a final exportable artifact."
+      });
   });
 
   (async () => {
@@ -1290,7 +1530,8 @@ function createTask(input, liveContext = null, orgSnapshots = ORG_CONTEXT.snapsh
     runtimeAgents.find((worker) => worker.id === workerId)
   );
   const stack = getProtocolStack();
-  const opportunities = getOpportunityRadar(input);
+  const scoutIntel = liveContext?.scoutIntel || null;
+  const opportunities = getOpportunityRadar(input, scoutIntel);
   const taskId = crypto.randomUUID();
   const task = {
     id: taskId,
@@ -1304,9 +1545,11 @@ function createTask(input, liveContext = null, orgSnapshots = ORG_CONTEXT.snapsh
     liveContext,
     orgSnapshots,
     plan: buildTaskPlan(input, selectedWorkers, intent),
-    strategy: buildStrategy(input, selectedWorkers, intent),
+    strategy: buildStrategy(input, selectedWorkers, intent, scoutIntel),
     stack,
     opportunities,
+    scoutIntel,
+    riskGate: liveContext?.riskGate || null,
     liveSpendRequested: Boolean(options.liveSpend && getPaidWorkerIds(selectedWorkerIds).length),
     liveSpendTargetId: options.liveSpend ? getPaidWorkerIds(selectedWorkerIds)[0] || null : null,
     steps: [],
@@ -1339,7 +1582,7 @@ function routeApi(req, res, url) {
       angle: "A self-funding agent organization on X Layer",
       integration: getIntegrationStatus(),
       stack: getProtocolStack(),
-      opportunities: getOpportunityRadar(),
+      opportunities: getOpportunityRadar("", LIVE_CONTEXT.snapshot?.scoutIntel || null),
       agents: cloneAgents(LIVE_CONTEXT.snapshot, ORG_CONTEXT.snapshots),
       live: buildLiveSummary(LIVE_CONTEXT.snapshot, LIVE_CONTEXT.error, ORG_CONTEXT.snapshots)
     });

@@ -25,7 +25,7 @@ Keep the scope intentionally narrow but make the narrative sharper.
 ### P0 features
 
 - One `Orchestrator Agent`
-- One `Scout Agent` for OKX market context
+- One `Scout Agent` for OKX market context, signal-board reads, token structure, and treasury-lane grading
 - One `Trader Agent` for route planning and treasury deployment
 - Three specialist workers: `Translator`, `Summarizer`, `CodeReviewer`
 - One `Treasury Agent`
@@ -38,6 +38,7 @@ Keep the scope intentionally narrow but make the narrative sharper.
 - Dashboard controls that can trigger a real live specialist hire on demand
 - Task submission can explicitly enable one real specialist hire and bind that spend to the mission receipt
 - Each mission carries a deterministic `proofTaskHash`, exports a receipt artifact, and can later be written to the live proof contracts
+- A visible `Scout intelligence` layer that uses OKX signal + token data to decide whether treasury budget should open
 - Real payment flow on X Layer in the final integration phase
 - Real proof writes in the final integration phase
 
@@ -54,6 +55,8 @@ It also needs a crisp public story, visible updates, and a page that humans can 
 ## Core protocol lane
 
 - `OKX Market` for discovery and signal reads
+- `OKX Signal + Token` for structure, concentration, and board context
+- `OKX Security` for treasury risk gating
 - `OKX Trade` for supported chains, quote, and swap construction
 - `Uniswap AI` for route planning and pay-with-any-token strategy
 - `x402` for specialist hiring and service settlement
@@ -63,10 +66,11 @@ It also needs a crisp public story, visible updates, and a page that humans can 
 
 1. User submits a natural-language task.
 2. Orchestrator activates `Scout` to attach market and treasury context.
-3. `Trader` prepares a route-aware execution plan.
-4. The organization spends treasury budget to hire specialist workers over x402.
-5. Treasury records completion on X Layer.
-6. Frontend shows the protocol lane, evidence, treasury logic, receipt, and final delivery.
+3. `Scout` grades the current treasury lane using signal flow, structure, and concentration data.
+4. `Trader` prepares a route-aware execution plan.
+5. The organization spends treasury budget to hire specialist workers over x402 only if the Scout lane and risk gate allow it.
+6. Treasury records completion on X Layer.
+7. Frontend shows the protocol lane, evidence, treasury logic, receipt, and final delivery.
 
 ## Frontend experience
 
@@ -79,6 +83,8 @@ The UI now focuses on:
 - `Strategy Snapshot`
 - `Pipeline`
 - `Treasury Radar`
+- `Scout Intelligence`
+- `Risk Gate`
 - `Execution Evidence`
 - `Receipt`
 

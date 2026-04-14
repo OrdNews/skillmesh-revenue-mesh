@@ -9,7 +9,7 @@ Target: 100 to 130 seconds
 Do not try to show everything.
 Show one clean mission:
 
-`scout -> route -> hire -> prove`
+`scout -> grade -> route -> hire -> prove`
 
 ## Script
 
@@ -36,18 +36,26 @@ Enable one real specialist hire.
 
 Say:
 
-`For this mission, the organization will scout an opportunity, prepare a live route, then spend a small amount of treasury budget on one real specialist hire.`
+`For this mission, the organization will scout the treasury lane, grade whether the lane is actually worth opening, prepare a live route, then spend a small amount of treasury budget on one real specialist hire.`
 
-### 0:55 - 1:20
+### 0:55 - 1:18
 
 Run the mission.
-As steps appear, point at Scout, Trader, and Specialist Purchases.
+As steps appear, point at Scout intelligence, Risk gate, Trader, and Specialist Purchases.
 
 Say:
 
-`Scout adds treasury context. Trader prepares a live route. Then the organization spends real onchain budget over x402 to hire the Summarizer specialist.`
+`Scout does not just read price. It uses OKX market, signal, token, and security data to grade the treasury lane. Trader prepares a live route. Then the organization spends real onchain budget over x402 to hire the Summarizer specialist.`
 
-### 1:20 - 1:40
+### 1:18 - 1:35
+
+Point at the Scout intelligence panel and the timeline step.
+
+Say:
+
+`This matters because the treasury does not open just because a quote exists. It opens because Scout can justify the lane with liquidity, concentration, signal flow, and risk context.`
+
+### 1:35 - 1:50
 
 Open the specialist settlement tx.
 
@@ -55,7 +63,7 @@ Say:
 
 `This is the real settlement transaction for the specialist hire on X Layer.`
 
-### 1:40 - 1:58
+### 1:50 - 2:05
 
 Open the proof ledger or receipt area.
 
@@ -63,13 +71,13 @@ Say:
 
 `After the spend, Treasury records task proof and mints a receipt. So the organization does not just act. It proves what it did.`
 
-### 1:58 - 2:10
+### 2:05 - 2:18
 
 Close on the proof addresses and artifact.
 
 Say:
 
-`We think the next onchain applications will not be isolated agents. They will be self-funding agent organizations.`
+`We think the next onchain applications will not be isolated agents. They will be self-funding agent organizations with an operating budget system and an intelligence gate.`
 
 ## Pre-open Tabs
 
@@ -84,6 +92,6 @@ Say:
 
 - Registry: `0xAe0bCB2181ff57E344D65aFBB6B033acf799d345`
 - Receipt: `0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3`
-- Specialist settlement: `0x9c72cd4131f398f743bf4aa75033a1e42f04202cbf643fe69462d5fdc9678d05`
-- Task proof: `0xbdc153b13c48fec7e2da104f90bdf9755d375b48524e6786784c15191469e50c`
-- Receipt mint: `0xcfa37406418fd82eae96c254b55032b8fa304ee126be4acca9554b3ef8587268`
+- Specialist settlement: `0xd9449e5693010ba9a23faf5e29f31bb6d84e3439af6d77f2bd1951b4023c70a7`
+- Task proof: `0xedbc9cfc88b6d2348ee517f0b1920e353d2e830cae579622bb694105d54a2105`
+- Receipt mint: `0xa290dc1919d5d7ccc3e2d23e8ea7733cc9963f8444be0bdb9a2d43ec0f2bd2eb`

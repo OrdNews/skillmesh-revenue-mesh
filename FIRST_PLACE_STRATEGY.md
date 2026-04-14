@@ -42,6 +42,10 @@ Backup line:
 
 `We are not showing that agents can pay. We are showing that agent organizations can manage budget, buy intelligence, and prove their operations.`
 
+New sharper backup line:
+
+`A quote is not enough. SkillMesh asks whether the treasury lane deserves budget before the organization spends.`
+
 ## What makes us first-place worthy
 
 ### 1. Organization, not agent
@@ -62,6 +66,28 @@ Many projects show that an agent can do something.
 We show that an organization can decide whether something is worth paying for.
 
 That moves the story from automation to economic coordination.
+
+### 2.5 Intelligence-gated budget, not quote-following behavior
+
+This is now one of the strongest edges in the product.
+
+`Scout` is not a market-data widget.
+It uses:
+
+- `OKX Market`
+- `OKX Signal`
+- `OKX Token`
+- `OKX Security`
+
+to decide whether the current treasury lane is structurally good enough to justify budget deployment.
+
+That gives us a much stronger sentence than:
+
+`the agent found a route`
+
+We can now say:
+
+`the organization justified opening budget before it spent`
 
 ### 3. Real spend tied to mission proof
 
@@ -104,6 +130,7 @@ Do not lead with:
 - `x402 marketplace`
 - `agent economy`
 - `agent company`
+- `signal-aware trader`
 
 Those phrases are crowded.
 
@@ -115,6 +142,7 @@ Lead with:
 
 - `onchain operating budget system`
 - `self-funding agent organization`
+- `intelligence-gated treasury lane`
 - `machine budget allocation`
 - `proof-backed specialist spending`
 - `verifiable operating record`
@@ -127,13 +155,13 @@ Do not frame the demo as:
 
 Frame it as:
 
-`the organization decided a specialist insight was worth spending treasury budget on, executed that spend, and left a verifiable operating record`
+`the organization decided the treasury lane was strong enough to open budget, spent on a specialist insight, and left a verifiable operating record`
 
 That sounds substantially more serious.
 
 ## The canonical judge pitch
 
-`Most agent demos show isolated capability. SkillMesh Revenue Mesh shows organizational capability. A self-funding organization on X Layer scouts context, routes treasury capital, spends its own budget to hire specialist agents over x402, and leaves a proof-backed operating record onchain.`
+`Most agent demos show isolated capability. SkillMesh Revenue Mesh shows organizational capability. A self-funding organization on X Layer grades treasury lanes with live intelligence, routes treasury capital, spends its own budget to hire specialist agents over x402, and leaves a proof-backed operating record onchain.`
 
 ## What wins AI judges
 
@@ -157,8 +185,9 @@ When speaking publicly, use this order:
 
 1. onchain operating budget system
 2. self-funding agent organization
-3. scout -> route -> pay -> prove
-4. OKX Onchain OS + Uniswap AI + x402 + X Layer
+3. intelligence-gated treasury lane
+4. scout -> grade -> route -> pay -> prove
+5. OKX Onchain OS + Uniswap AI + x402 + X Layer
 
 Do not reverse this order.
 

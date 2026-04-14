@@ -19,6 +19,7 @@ More specifically, we see it as an `onchain operating budget system` for agent o
 Here is the core loop:
 
 - `Scout` reads treasury and market context
+- `Scout` grades the treasury lane with live signal, structure, and concentration data
 - `Trader` prepares a live route
 - the organization spends its own onchain budget to hire specialists over `x402`
 - `Treasury` records task proof and mints a receipt on `X Layer`
@@ -31,6 +32,10 @@ Why this matters:
 - most agent systems stop at workflow
 - most trading agents stop at execution
 - most dashboards do not show a real machine budget
+- most market-aware agents still do not explain why a treasury lane was worth opening in the first place
+
+What makes this version different is that `Scout` is not just reading price.
+It uses live `OKX Market`, `OKX Signal`, `OKX Token`, and `OKX Security` data to decide whether the current treasury target is structurally good enough to justify budget deployment.
 
 We wanted to build something closer to a future onchain operating system for autonomous organizations.
 
@@ -41,13 +46,22 @@ Core stack:
 - `x402`
 - `X Layer`
 
+Live stack inside the mission:
+
+- `OKX Market` for wallet and route context
+- `OKX Signal + Token` for Scout intelligence
+- `OKX Security` for treasury risk gating
+- `OKX Trade + Uniswap AI` for route-aware execution
+- `x402` for specialist spend
+- `X Layer` for proof and receipts
+
 Canonical proof:
 
 - Registry: `0xAe0bCB2181ff57E344D65aFBB6B033acf799d345`
 - Receipt: `0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3`
-- Mission proof tx: `0xbdc153b13c48fec7e2da104f90bdf9755d375b48524e6786784c15191469e50c`
-- Receipt mint tx: `0xcfa37406418fd82eae96c254b55032b8fa304ee126be4acca9554b3ef8587268`
-- Specialist settlement tx: `0x9c72cd4131f398f743bf4aa75033a1e42f04202cbf643fe69462d5fdc9678d05`
+- Mission proof tx: `0xedbc9cfc88b6d2348ee517f0b1920e353d2e830cae579622bb694105d54a2105`
+- Receipt mint tx: `0xa290dc1919d5d7ccc3e2d23e8ea7733cc9963f8444be0bdb9a2d43ec0f2bd2eb`
+- Specialist settlement tx: `0xd9449e5693010ba9a23faf5e29f31bb6d84e3439af6d77f2bd1951b4023c70a7`
 
 Links:
 
@@ -64,14 +78,14 @@ SkillMesh Revenue Mesh 是我们参加 `OKX Build X Hackathon` 的 `X Layer Aren
 
 它不是普通任务机器人，也不是普通交易机器人，而是一个部署在 `X Layer` 上、会自己管理预算的 AI 组织：
 
-- `Scout` 负责读取市场和 treasury 上下文
+- `Scout` 负责读取市场、signal、token 结构和 treasury 上下文，并判断预算是否该开启
 - `Trader` 负责准备 live route
 - 组织通过 `x402` 花自己的链上预算雇佣 specialist
 - `Treasury` 负责把任务 proof 和 receipt 写到 `X Layer`
 
 一句话：
 
-`Scout -> route -> pay -> prove`
+`Scout -> grade -> route -> pay -> prove`
 
 ## Follow-up Comment
 

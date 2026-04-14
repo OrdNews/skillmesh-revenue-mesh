@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T09:20:54.659Z",
+  "updatedAt": "2026-04-14T15:46:22.292Z",
   "registrations": [
     {
       "id": "orchestrator-1775984911807",
@@ -43,6 +43,21 @@
     }
   ],
   "taskProofs": [
+    {
+      "id": "20c4707f-ca85-4d0a-8ccf-4e6e54e49a31-1776181582291",
+      "taskId": "20c4707f-ca85-4d0a-8ccf-4e6e54e49a31",
+      "createdAt": "2026-04-14T15:46:22.291Z",
+      "proofTaskHash": "0xef2c52171e39d55afc8ed8e95333418948a61c7015fc2bd943033763035bad80",
+      "mode": "all",
+      "outputs": {
+        "recordTaskCompletion": {
+          "txHash": "0xedbc9cfc88b6d2348ee517f0b1920e353d2e830cae579622bb694105d54a2105"
+        },
+        "mintReceipt": {
+          "txHash": "0xa290dc1919d5d7ccc3e2d23e8ea7733cc9963f8444be0bdb9a2d43ec0f2bd2eb"
+        }
+      }
+    },
     {
       "id": "5cafdc6f-5aa8-4596-af86-a8fabc8ecd61-1775985654658",
       "taskId": "5cafdc6f-5aa8-4596-af86-a8fabc8ecd61",

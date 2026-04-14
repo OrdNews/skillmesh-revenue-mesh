@@ -21,7 +21,9 @@ const stackList = document.querySelector("#stack");
 const strategyCard = document.querySelector("#strategy");
 const pipeline = document.querySelector("#pipeline");
 const opportunities = document.querySelector("#opportunities");
+const scoutIntel = document.querySelector("#scout-intel");
 const transactions = document.querySelector("#transactions");
+const riskGate = document.querySelector("#risk-gate");
 const receipt = document.querySelector("#receipt");
 const finalOutput = document.querySelector("#final-output");
 const balances = document.querySelector("#balances");
@@ -65,6 +67,45 @@ function formatDelta(before, after) {
   const delta = Number((after - before).toFixed(3));
   const sign = delta > 0 ? "+" : "";
   return `${sign}${delta.toFixed(3)} USD`;
+}
+
+function toNullableNumber(value, digits = null) {
+  if (value == null || value === "") {
+    return null;
+  }
+
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) {
+    return null;
+  }
+
+  return digits == null ? parsed : Number(parsed.toFixed(digits));
+}
+
+function formatCompactUsd(value) {
+  const amount = toNullableNumber(value);
+  if (amount == null) {
+    return "n/a";
+  }
+
+  if (amount >= 1_000_000_000) {
+    return `$${(amount / 1_000_000_000).toFixed(2)}B`;
+  }
+
+  if (amount >= 1_000_000) {
+    return `$${(amount / 1_000_000).toFixed(2)}M`;
+  }
+
+  if (amount >= 1_000) {
+    return `$${(amount / 1_000).toFixed(2)}K`;
+  }
+
+  return `$${amount.toFixed(2)}`;
+}
+
+function formatPercent(value) {
+  const parsed = toNullableNumber(value, 2);
+  return parsed == null ? "n/a" : `${parsed}%`;
 }
 
 function renderAgents() {
@@ -133,14 +174,43 @@ function renderAgents() {
 }
 
 function renderStack() {
-  if (!state.stack.length) {
+  const gate = state.task?.riskGate || state.live?.riskGate;
+  const intel = state.task?.scoutIntel || state.live?.scoutIntel;
+  const stack = state.stack.map((item) => {
+    if (item.id === "okx-security" && gate) {
+      return {
+        ...item,
+        status:
+          gate.status === "pass"
+            ? "primed"
+            : gate.status === "block"
+              ? "blocked"
+              : gate.status === "warn" || gate.status === "degraded"
+                ? "review"
+                : item.status,
+        summary: gate.summary || item.summary
+      };
+    }
+
+    if (item.id === "okx-market" && intel?.verdict) {
+      return {
+        ...item,
+        status: intel.verdict.lane === "budget-ready" ? "primed" : "review",
+        summary: intel.verdict.summary || item.summary
+      };
+    }
+
+    return item;
+  });
+
+  if (!stack.length) {
     stackList.className = "stack-list empty-state";
     stackList.innerHTML = "<p>Protocol stack details will load here.</p>";
     return;
   }
 
   stackList.className = "stack-list";
-  stackList.innerHTML = state.stack
+  stackList.innerHTML = stack
     .map(
       (item) => `
         <article class="stack-card">
@@ -179,6 +249,14 @@ function renderStrategy() {
       <div>
         <dt>Budget policy</dt>
         <dd>${escapeHtml(strategy.paymentPolicy)}</dd>
+      </div>
+      <div class="strategy-wide">
+        <dt>Scout policy</dt>
+        <dd>${escapeHtml(strategy.scoutPolicy || "Scout policy will appear here.")}</dd>
+      </div>
+      <div class="strategy-wide">
+        <dt>Risk policy</dt>
+        <dd>${escapeHtml(strategy.riskPolicy || "Risk policy will appear here.")}</dd>
       </div>
       <div class="strategy-wide">
         <dt>Route policy</dt>
@@ -256,6 +334,142 @@ function renderOpportunities() {
       `
     )
     .join("");
+}
+
+function renderScoutIntel() {
+  const intel = state.task?.scoutIntel || state.live?.scoutIntel;
+
+  if (!intel?.target) {
+    scoutIntel.className = "intel-card empty-state";
+    scoutIntel.innerHTML = "<p>Scout token structure and signal flow will appear here after the app loads.</p>";
+    return;
+  }
+
+  const target = intel.target;
+  const verdict = intel.verdict || {};
+  const topSignals = intel.signals?.topSignals || [];
+  const verdictClass =
+    verdict.lane === "budget-ready" ? "intel-budget-ready" : verdict.lane === "watch" ? "intel-watch" : "intel-review";
+
+  scoutIntel.className = "intel-card";
+  scoutIntel.innerHTML = `
+    <div class="intel-top">
+      <div>
+        <span class="intel-kicker">Target lane</span>
+        <h3>${escapeHtml(target.symbol)}</h3>
+      </div>
+      <span class="intel-verdict ${verdictClass}">${escapeHtml(verdict.lane || "review")}</span>
+    </div>
+    <p class="intel-summary">${escapeHtml(verdict.summary || "No Scout summary available.")}</p>
+    <div class="intel-grid">
+      <div>
+        <dt>Liquidity</dt>
+        <dd>${escapeHtml(formatCompactUsd(target.liquidityUsd))}</dd>
+      </div>
+      <div>
+        <dt>24h volume</dt>
+        <dd>${escapeHtml(formatCompactUsd(target.volume24hUsd))}</dd>
+      </div>
+      <div>
+        <dt>Risk level</dt>
+        <dd>${escapeHtml(String(target.riskControlLevel ?? "n/a"))}</dd>
+      </div>
+      <div>
+        <dt>Top 10</dt>
+        <dd>${escapeHtml(formatPercent(target.top10HoldPercent))}</dd>
+      </div>
+      <div>
+        <dt>Bundle</dt>
+        <dd>${escapeHtml(formatPercent(target.bundleHoldingPercent))}</dd>
+      </div>
+      <div>
+        <dt>24h price</dt>
+        <dd>${escapeHtml(formatPercent(target.priceChange24H))}</dd>
+      </div>
+    </div>
+    <div class="tag-row">
+      <span class="tag-pill">${escapeHtml(target.role)}</span>
+      ${(target.tokenTags || []).map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}
+    </div>
+    <div class="intel-reasons">
+      ${(verdict.reasons || [])
+        .map((reason) => `<div class="intel-reason">${escapeHtml(reason)}</div>`)
+        .join("")}
+    </div>
+    <div class="intel-signals">
+      ${
+        topSignals.length
+          ? topSignals
+              .map(
+                (signal) => `
+                  <article class="intel-signal ${signal.matchedTarget ? "is-match" : ""}">
+                    <div class="intel-signal-top">
+                      <strong>${escapeHtml(signal.symbol)}</strong>
+                      <span>${escapeHtml(signal.walletTypeLabel)}</span>
+                    </div>
+                    <p>${escapeHtml(formatCompactUsd(signal.amountUsd))} · sold ratio ${escapeHtml(
+                      formatPercent(signal.soldRatioPercent)
+                    )} · ${escapeHtml(String(signal.triggerWalletCount || 0))} wallets</p>
+                  </article>
+                `
+              )
+              .join("")
+          : '<p class="intel-empty">No live X Layer signals were attached to this snapshot.</p>'
+      }
+    </div>
+  `;
+}
+
+function renderRiskGate() {
+  const gate = state.task?.riskGate || state.live?.riskGate;
+
+  if (!gate) {
+    riskGate.className = "risk-card empty-state";
+    riskGate.innerHTML = "<p>Security findings will appear here after the app loads.</p>";
+    return;
+  }
+
+  const findings = Array.isArray(gate.findings) ? gate.findings : [];
+  const targets = Array.isArray(gate.targets) ? gate.targets : [];
+  const statusClass = `risk-${escapeHtml(gate.status || "unknown")}`;
+
+  riskGate.className = "risk-card";
+  riskGate.innerHTML = `
+    <div class="risk-top">
+      <div>
+        <span class="risk-kicker">Treasury verdict</span>
+        <h3>${escapeHtml((gate.status || "unknown").toUpperCase())}</h3>
+      </div>
+      <span class="risk-badge ${statusClass}">${escapeHtml(gate.source || "okx-security")}</span>
+    </div>
+    <p class="risk-summary">${escapeHtml(gate.summary || "No summary available.")}</p>
+    <div class="tag-row">
+      ${targets.map((target) => `<span class="tag-pill">${escapeHtml(`${target.symbol} · ${target.role}`)}</span>`).join("")}
+    </div>
+    <div class="risk-findings">
+      ${
+        findings.length
+          ? findings
+              .map(
+                (finding) => `
+                  <article class="risk-finding">
+                    <div class="risk-finding-top">
+                      <strong>${escapeHtml(finding.symbol)}</strong>
+                      <span>${escapeHtml(finding.highRisk ? "high risk" : finding.supported ? "supported" : "unsupported")}</span>
+                    </div>
+                    <p>${escapeHtml(
+                      finding.flags.length
+                        ? finding.flags.join(", ")
+                        : `buy tax ${finding.buyTaxes}% · sell tax ${finding.sellTaxes}%`
+                    )}</p>
+                  </article>
+                `
+              )
+              .join("")
+          : '<p class="risk-empty">No token-level findings were attached to this mission.</p>'
+      }
+    </div>
+  `;
 }
 
 function renderTransactions() {
@@ -447,6 +661,38 @@ function renderReadiness() {
         </div>
         <p>${escapeHtml(state.live.x402.settlementAsset)} -> ${escapeHtml(state.live.x402.payoutWallet || "missing payout wallet")}</p>
         <code>${escapeHtml(`${state.live.x402.supportedCount || 0} supported payment schemes cached`)}</code>
+      </article>
+    `);
+  }
+
+  if (state.live?.scoutIntel) {
+    liveCards.push(`
+      <article class="readiness-card">
+        <div class="readiness-top">
+          <strong>Scout intelligence</strong>
+          <span class="readiness-status ${
+            state.live.scoutIntel.verdict?.lane === "review" ? "pending" : "ready"
+          }">
+            ${escapeHtml(state.live.scoutIntel.verdict?.lane || state.live.scoutIntel.status || "review")}
+          </span>
+        </div>
+        <p>${escapeHtml(state.live.scoutIntel.verdict?.summary || "Scout board is waiting for a live verdict.")}</p>
+        <code>${escapeHtml(state.live.scoutIntel.source || "okx-market-scout")}</code>
+      </article>
+    `);
+  }
+
+  if (state.live?.riskGate) {
+    liveCards.push(`
+      <article class="readiness-card">
+        <div class="readiness-top">
+          <strong>OKX Security</strong>
+          <span class="readiness-status ${state.live.riskGate.status === "pass" ? "ready" : "pending"}">
+            ${escapeHtml(state.live.riskGate.status)}
+          </span>
+        </div>
+        <p>${escapeHtml(state.live.riskGate.summary)}</p>
+        <code>${escapeHtml(state.live.riskGate.source || "okx-security")}</code>
       </article>
     `);
   }
@@ -769,6 +1015,8 @@ function renderAll() {
   renderStrategy();
   renderPipeline();
   renderOpportunities();
+  renderScoutIntel();
+  renderRiskGate();
   renderTransactions();
   renderReceipt();
   renderFinalOutput();
