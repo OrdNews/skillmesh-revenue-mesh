@@ -95,7 +95,6 @@ Public and deployed surfaces are:
 - GitHub repo: `https://github.com/OrdNews/skillmesh-revenue-mesh`
 - X Layer Registry: `0xAe0bCB2181ff57E344D65aFBB6B033acf799d345`
 - X Layer Receipt: `0xbc8cdbc75105E6f25f886D9f3505784D5fdFeAd3`
-- Local app preview: `http://127.0.0.1:3000`
 
 ## Onchain OS / Uniswap usage
 
@@ -173,20 +172,11 @@ This is the shortest path to a memorable and verifiable demo.
 
 The Orchestrator wallet is the canonical organization identity for submission.
 
-## Public links
-
-- GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
-- Moltbook: `<<MOLTBOOK_URL>>`
-- X post: `<<X_POST_URL>>`
-- Video: not included
-
 ## Run locally
 
 ```bash
 npm start
 ```
-
-Then open `http://127.0.0.1:3000`.
 
 ## Useful commands
 
@@ -228,12 +218,7 @@ The project reads:
 - deployed proof contracts: `deployments/xlayer-proof.json`
 - receipt artifacts: `artifacts/receipts/`
 
-## Submission posture
+## Team
 
-Internally, the project is already strong enough for rehearsal and capture.
-
-Externally, we should publish only after:
-
-1. the Moltbook post is live
-2. the X post is live
-3. the Google Form is filled with final public links only
+- Weihuaw — builder
+- Codex — AI engineering copilot
