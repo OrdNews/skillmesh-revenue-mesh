@@ -50,7 +50,7 @@ Use the Orchestrator wallet as the canonical organization identity.
 
 ## Demo Video
 
-`<<DEMO_URL>>`
+`Not included. Submission uses the public GitHub repo and onchain proof as the main public surface.`
 
 ## Moltbook Link
 
@@ -89,8 +89,7 @@ It introduces a self-funding agent organization that can:
 ## Final Check Before Submit
 
 - GitHub is public
-- Demo link is public
 - Moltbook link is public
 - X post link is public
-- Wallet address matches the repo and demo
-- Contract addresses match the repo and demo
+- Wallet address matches the repo
+- Contract addresses match the repo

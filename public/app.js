@@ -9,7 +9,7 @@ const state = {
   livePurchases: null,
   proof: null,
   purchaseBusy: false,
-  purchaseStatus: "No live specialist purchase has been triggered from the dashboard yet.",
+  purchaseStatus: "No live hire yet.",
   taskId: null,
   task: null,
   pollHandle: null
@@ -52,6 +52,14 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function shortenMiddle(value, start = 6, end = 4) {
+  const text = String(value || "");
+  if (!text || text.length <= start + end + 3) {
+    return text || "n/a";
+  }
+  return `${text.slice(0, start)}...${text.slice(-end)}`;
 }
 
 async function fetchJson(url, options) {
@@ -147,7 +155,7 @@ function renderAgents() {
     flowStrip.innerHTML = `
       <div class="flow-pill">
         <strong>Idle</strong>
-        <span>Start a task to animate market scouting, route planning, x402 settlements, and proof.</span>
+        <span>Start a mission.</span>
       </div>
     `;
     return;
@@ -231,7 +239,7 @@ function renderStack() {
 function renderStrategy() {
   if (!state.task?.strategy) {
     strategyCard.className = "strategy-card empty-state";
-    strategyCard.innerHTML = "<p>Start a workflow to see the current strategy snapshot.</p>";
+    strategyCard.innerHTML = "<p>Start a mission.</p>";
     return;
   }
 
@@ -240,43 +248,39 @@ function renderStrategy() {
   strategyCard.innerHTML = `
     <span class="strategy-label">Current strategy</span>
     <h3>${escapeHtml(strategy.headline)}</h3>
-    <p>${escapeHtml(strategy.objective)}</p>
     <div class="strategy-grid-list">
       <div>
-        <dt>Execution lane</dt>
+        <dt>Lane</dt>
         <dd>${escapeHtml(strategy.executionLane)}</dd>
       </div>
       <div>
-        <dt>Budget policy</dt>
+        <dt>Spend</dt>
         <dd>${escapeHtml(strategy.paymentPolicy)}</dd>
       </div>
-      <div class="strategy-wide">
-        <dt>Scout policy</dt>
+      <div>
+        <dt>Scout</dt>
         <dd>${escapeHtml(strategy.scoutPolicy || "Scout policy will appear here.")}</dd>
       </div>
-      <div class="strategy-wide">
-        <dt>Risk policy</dt>
+      <div>
+        <dt>Risk</dt>
         <dd>${escapeHtml(strategy.riskPolicy || "Risk policy will appear here.")}</dd>
       </div>
       <div class="strategy-wide">
-        <dt>Route policy</dt>
+        <dt>Route</dt>
         <dd>${escapeHtml(strategy.routePolicy)}</dd>
       </div>
       <div class="strategy-wide">
-        <dt>Treasury guardrail</dt>
-        <dd>${escapeHtml(strategy.budgetPolicy || "Treasury guardrails will appear here.")}</dd>
-      </div>
-      <div>
-        <dt>Treasury loop</dt>
-        <dd>${escapeHtml(strategy.treasuryLoop || "Scout -> Route -> Fund -> Hire -> Prove")}</dd>
+        <dt>Proof</dt>
+        <dd>${escapeHtml(strategy.proofPolicy)}</dd>
       </div>
       <div class="strategy-wide">
-        <dt>Proof policy</dt>
-        <dd>${escapeHtml(strategy.proofPolicy)}</dd>
+        <dt>Guardrail</dt>
+        <dd>${escapeHtml(strategy.budgetPolicy || "Treasury guardrails will appear here.")}</dd>
       </div>
     </div>
     <div class="tag-row">
       ${strategy.protocols
+        .slice(0, 4)
         .map((protocol) => `<span class="tag-pill">${escapeHtml(protocol)}</span>`)
         .join("")}
     </div>
@@ -286,8 +290,7 @@ function renderStrategy() {
 function renderPipeline() {
   if (!state.task || state.task.steps.length === 0) {
     pipeline.className = "pipeline-list empty-state";
-    pipeline.innerHTML =
-      "<p>No workflow running yet. Launch a task to watch the orchestration path.</p>";
+    pipeline.innerHTML = "<p>No mission yet.</p>";
     return;
   }
 
@@ -315,7 +318,7 @@ function renderOpportunities() {
   const lanes = state.task?.opportunities || state.opportunities;
   if (!lanes.length) {
     opportunities.className = "opportunities-list empty-state";
-    opportunities.innerHTML = "<p>Opportunity lanes will appear here after the app loads.</p>";
+    opportunities.innerHTML = "<p>Loading lanes.</p>";
     return;
   }
 
@@ -341,7 +344,7 @@ function renderScoutIntel() {
 
   if (!intel?.target) {
     scoutIntel.className = "intel-card empty-state";
-    scoutIntel.innerHTML = "<p>Scout token structure and signal flow will appear here after the app loads.</p>";
+    scoutIntel.innerHTML = "<p>Loading scout lane.</p>";
     return;
   }
 
@@ -367,39 +370,30 @@ function renderScoutIntel() {
         <dd>${escapeHtml(formatCompactUsd(target.liquidityUsd))}</dd>
       </div>
       <div>
-        <dt>24h volume</dt>
+        <dt>Volume</dt>
         <dd>${escapeHtml(formatCompactUsd(target.volume24hUsd))}</dd>
       </div>
       <div>
-        <dt>Risk level</dt>
+        <dt>Risk</dt>
         <dd>${escapeHtml(String(target.riskControlLevel ?? "n/a"))}</dd>
       </div>
       <div>
         <dt>Top 10</dt>
         <dd>${escapeHtml(formatPercent(target.top10HoldPercent))}</dd>
       </div>
-      <div>
-        <dt>Bundle</dt>
-        <dd>${escapeHtml(formatPercent(target.bundleHoldingPercent))}</dd>
-      </div>
-      <div>
-        <dt>24h price</dt>
-        <dd>${escapeHtml(formatPercent(target.priceChange24H))}</dd>
-      </div>
     </div>
     <div class="tag-row">
       <span class="tag-pill">${escapeHtml(target.role)}</span>
-      ${(target.tokenTags || []).map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}
-    </div>
-    <div class="intel-reasons">
-      ${(verdict.reasons || [])
-        .map((reason) => `<div class="intel-reason">${escapeHtml(reason)}</div>`)
+      ${(target.tokenTags || [])
+        .slice(0, 3)
+        .map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`)
         .join("")}
     </div>
     <div class="intel-signals">
       ${
         topSignals.length
           ? topSignals
+              .slice(0, 2)
               .map(
                 (signal) => `
                   <article class="intel-signal ${signal.matchedTarget ? "is-match" : ""}">
@@ -407,14 +401,14 @@ function renderScoutIntel() {
                       <strong>${escapeHtml(signal.symbol)}</strong>
                       <span>${escapeHtml(signal.walletTypeLabel)}</span>
                     </div>
-                    <p>${escapeHtml(formatCompactUsd(signal.amountUsd))} · sold ratio ${escapeHtml(
-                      formatPercent(signal.soldRatioPercent)
-                    )} · ${escapeHtml(String(signal.triggerWalletCount || 0))} wallets</p>
+                    <p>${escapeHtml(formatCompactUsd(signal.amountUsd))} · ${escapeHtml(
+                      String(signal.triggerWalletCount || 0)
+                    )} wallets</p>
                   </article>
                 `
               )
               .join("")
-          : '<p class="intel-empty">No live X Layer signals were attached to this snapshot.</p>'
+          : ""
       }
     </div>
   `;
@@ -425,7 +419,7 @@ function renderRiskGate() {
 
   if (!gate) {
     riskGate.className = "risk-card empty-state";
-    riskGate.innerHTML = "<p>Security findings will appear here after the app loads.</p>";
+    riskGate.innerHTML = "<p>Loading risk gate.</p>";
     return;
   }
 
@@ -443,13 +437,11 @@ function renderRiskGate() {
       <span class="risk-badge ${statusClass}">${escapeHtml(gate.source || "okx-security")}</span>
     </div>
     <p class="risk-summary">${escapeHtml(gate.summary || "No summary available.")}</p>
-    <div class="tag-row">
-      ${targets.map((target) => `<span class="tag-pill">${escapeHtml(`${target.symbol} · ${target.role}`)}</span>`).join("")}
-    </div>
     <div class="risk-findings">
       ${
         findings.length
           ? findings
+              .slice(0, 3)
               .map(
                 (finding) => `
                   <article class="risk-finding">
@@ -460,13 +452,18 @@ function renderRiskGate() {
                     <p>${escapeHtml(
                       finding.flags.length
                         ? finding.flags.join(", ")
-                        : `buy tax ${finding.buyTaxes}% · sell tax ${finding.sellTaxes}%`
+                        : `tax ${finding.buyTaxes}% / ${finding.sellTaxes}%`
                     )}</p>
                   </article>
                 `
               )
               .join("")
-          : '<p class="risk-empty">No token-level findings were attached to this mission.</p>'
+          : targets.length
+            ? `<div class="tag-row">${targets
+                .slice(0, 3)
+                .map((target) => `<span class="tag-pill">${escapeHtml(target.symbol)}</span>`)
+                .join("")}</div>`
+            : ""
       }
     </div>
   `;
@@ -475,8 +472,7 @@ function renderRiskGate() {
 function renderTransactions() {
   if (!state.task || state.task.transactions.length === 0) {
     transactions.className = "tx-list empty-state";
-    transactions.innerHTML =
-      "<p>Evidence entries will appear here as the protocol lane advances.</p>";
+    transactions.innerHTML = "<p>No evidence yet.</p>";
     return;
   }
 
@@ -489,7 +485,7 @@ function renderTransactions() {
             <strong>${escapeHtml(tx.label)}</strong>
             <span>${escapeHtml(tx.amount)}</span>
           </div>
-          <p>${escapeHtml(tx.from)} -> ${escapeHtml(tx.to)}</p>
+          <p>${escapeHtml(shortenMiddle(tx.from))} -> ${escapeHtml(shortenMiddle(tx.to))}</p>
           <div class="tx-foot">
             <span>${escapeHtml(tx.network)}</span>
             <a href="${escapeHtml(tx.explorerUrl)}" target="_blank" rel="noreferrer">${escapeHtml(
@@ -505,8 +501,7 @@ function renderTransactions() {
 function renderReceipt() {
   if (!state.task || !state.task.receipt) {
     receipt.className = "receipt-card empty-state";
-    receipt.innerHTML =
-      "<p>No receipt minted yet. Complete a workflow to see the final artifact.</p>";
+    receipt.innerHTML = "<p>No receipt yet.</p>";
     return;
   }
 
@@ -522,25 +517,17 @@ function renderReceipt() {
         <dd>${escapeHtml(state.task.receipt.totalPaid)}</dd>
       </div>
       <div>
-        <dt>Agents involved</dt>
-        <dd>${escapeHtml(String(state.task.receipt.agentCount))}</dd>
-      </div>
-      <div class="receipt-wide">
-        <dt>Protocol lane</dt>
-        <dd>${escapeHtml(state.task.receipt.protocolLane)}</dd>
-      </div>
-      <div class="receipt-wide">
-        <dt>Task hash</dt>
-        <dd>${escapeHtml(state.task.receipt.taskHash)}</dd>
-      </div>
-      <div>
-        <dt>Live hires</dt>
+        <dt>Hires</dt>
         <dd>${escapeHtml(String(state.task.receipt.liveSpecialistCount || 0))}</dd>
       </div>
+      <div class="receipt-wide">
+        <dt>Proof hash</dt>
+        <dd>${escapeHtml(shortenMiddle(state.task.receipt.taskHash, 10, 8))}</dd>
+      </div>
     </dl>
-    <p class="receipt-thesis">${escapeHtml(state.task.receipt.thesis)}</p>
     <div class="receipt-payouts">
       ${state.task.receipt.payoutMap
+        .slice(0, 3)
         .map(
           (payout) => `
             <div class="receipt-pill">
@@ -553,10 +540,10 @@ function renderReceipt() {
     </div>
     <div class="receipt-actions">
       <a class="receipt-download" href="${escapeHtml(state.task.receipt.downloadUrl)}" target="_blank" rel="noreferrer">
-        Download receipt JSON
+        Receipt JSON
       </a>
       <a class="receipt-download" href="${escapeHtml(state.task.receipt.artifactUrl || `/artifacts/receipts/${state.task.id}.json`)}" target="_blank" rel="noreferrer">
-        Open proof artifact
+        Proof artifact
       </a>
     </div>
   `;
@@ -565,8 +552,7 @@ function renderReceipt() {
 function renderFinalOutput() {
   if (!state.task || !state.task.finalOutput) {
     finalOutput.className = "output-card empty-state";
-    finalOutput.textContent =
-      "Results from Scout, Trader, and the specialist workers will land here.";
+    finalOutput.textContent = "Mission output appears here.";
     return;
   }
 
@@ -577,8 +563,7 @@ function renderFinalOutput() {
 function renderBalances() {
   if (!state.task || !state.task.balancesBefore || !state.task.balancesAfter) {
     balances.className = "balances-list empty-state";
-    balances.innerHTML =
-      "<p>Run a workflow to compare agent balances before and after settlement.</p>";
+    balances.innerHTML = "<p>No delta yet.</p>";
     return;
   }
 
@@ -611,7 +596,7 @@ function renderBalances() {
 function renderReadiness() {
   if (!state.integration) {
     readiness.className = "readiness-list empty-state";
-    readiness.innerHTML = "<p>Environment checks will appear here after the app loads.</p>";
+    readiness.innerHTML = "<p>Loading rails.</p>";
     return;
   }
 
@@ -628,8 +613,8 @@ function renderReadiness() {
           <strong>Live wallet</strong>
           <span class="readiness-status ready">active</span>
         </div>
-        <p>${escapeHtml(state.live.wallet.address)} · ${escapeHtml(holdings)}</p>
-        <code>$${escapeHtml(String(state.live.wallet.accountValueUsd.toFixed(2)))} on X Layer</code>
+        <p>${escapeHtml(shortenMiddle(state.live.wallet.address, 8, 6))}</p>
+        <code>$${escapeHtml(String(state.live.wallet.accountValueUsd.toFixed(2)))} · ${escapeHtml(holdings)}</code>
       </article>
     `);
   }
@@ -659,8 +644,8 @@ function renderReadiness() {
             ${state.live.x402.ready ? "primed" : "setup"}
           </span>
         </div>
-        <p>${escapeHtml(state.live.x402.settlementAsset)} -> ${escapeHtml(state.live.x402.payoutWallet || "missing payout wallet")}</p>
-        <code>${escapeHtml(`${state.live.x402.supportedCount || 0} supported payment schemes cached`)}</code>
+        <p>${escapeHtml(state.live.x402.settlementAsset)} -> ${escapeHtml(shortenMiddle(state.live.x402.payoutWallet || "missing"))}</p>
+        <code>${escapeHtml(`${state.live.x402.supportedCount || 0} schemes cached`)}</code>
       </article>
     `);
   }
@@ -676,7 +661,7 @@ function renderReadiness() {
             ${escapeHtml(state.live.scoutIntel.verdict?.lane || state.live.scoutIntel.status || "review")}
           </span>
         </div>
-        <p>${escapeHtml(state.live.scoutIntel.verdict?.summary || "Scout board is waiting for a live verdict.")}</p>
+        <p>${escapeHtml(state.live.scoutIntel.verdict?.summary || "Waiting for verdict.")}</p>
         <code>${escapeHtml(state.live.scoutIntel.source || "okx-market-scout")}</code>
       </article>
     `);
@@ -705,7 +690,7 @@ function renderReadiness() {
           <span class="readiness-status pending">degraded</span>
         </div>
         <p>${escapeHtml(state.live.error)}</p>
-        <code>live context fallback in use</code>
+        <code>fallback mode</code>
       </article>
     `);
   }
@@ -733,7 +718,7 @@ function renderOrganization() {
 
   if (!wallets.length) {
     orgWallets.className = "org-list empty-state";
-    orgWallets.innerHTML = "<p>Organization wallets will appear here after the app loads.</p>";
+    orgWallets.innerHTML = "<p>Loading wallets.</p>";
     return;
   }
 
@@ -753,9 +738,9 @@ function renderOrganization() {
             <strong>${escapeHtml(wallet.name)}</strong>
             <span>${escapeHtml(wallet.role)}</span>
           </div>
-          <p class="org-wallet">${escapeHtml(wallet.wallet)}</p>
+          <p class="org-wallet">${escapeHtml(shortenMiddle(wallet.wallet, 8, 6))}</p>
           <div class="org-meta">
-            <span>Account: ${escapeHtml(wallet.accountId)}</span>
+            <span>${escapeHtml(wallet.accountId)}</span>
             <span>Value: ${escapeHtml(wallet.valueUsd.toFixed(2))} USD</span>
           </div>
           <p class="org-holdings">${escapeHtml(holdings)}</p>
@@ -771,7 +756,7 @@ function renderFundingProof() {
 
   if (!ledger?.transfers?.length) {
     fundingProof.className = "proof-list empty-state";
-    fundingProof.innerHTML = "<p>Seed funding transfers will appear here after the app loads.</p>";
+    fundingProof.innerHTML = "<p>Loading funding.</p>";
     return;
   }
 
@@ -797,7 +782,7 @@ function renderFundingProof() {
         <article class="proof-card">
           <div class="proof-top">
             <strong>${escapeHtml(transfer.role)}</strong>
-            <span>${escapeHtml(transfer.address)}</span>
+            <span>${escapeHtml(shortenMiddle(transfer.address, 8, 6))}</span>
           </div>
           <div class="proof-assets">${assets}</div>
         </article>
@@ -811,7 +796,7 @@ function renderLivePurchases() {
 
   if (!purchases.length) {
     livePurchases.className = "proof-list empty-state";
-    livePurchases.innerHTML = "<p>Live specialist purchases will appear here after the first settlement lands.</p>";
+    livePurchases.innerHTML = "<p>No live hires yet.</p>";
     return;
   }
 
@@ -832,12 +817,12 @@ function renderLivePurchases() {
         <article class="proof-card">
           <div class="proof-top">
             <strong>${escapeHtml(purchase.workerName)}</strong>
-            <span>${escapeHtml(purchase.payerName)} -> ${escapeHtml(purchase.payTo)}</span>
+            <span>${escapeHtml(shortenMiddle(purchase.payTo, 8, 6))}</span>
           </div>
           <div class="proof-assets">
             <div class="proof-asset">
               <strong>${escapeHtml(purchase.amountDisplay || `${purchase.paymentRequirements?.maxAmountRequired || "0"} units`)}</strong>
-              <span>${escapeHtml(purchase.paymentRequirements?.description || "specialist purchase")}</span>
+              <span>${escapeHtml(purchase.payerName)}</span>
             </div>
             <div class="proof-asset">
               <strong>${escapeHtml(purchase.status || "recorded")}</strong>
@@ -855,8 +840,7 @@ function renderProofLedger() {
 
   if (!proof) {
     proofLedger.className = "proof-list empty-state";
-    proofLedger.innerHTML =
-      "<p>Proof registrations and task writes will appear here after the proof layer is connected.</p>";
+    proofLedger.innerHTML = "<p>Loading proof.</p>";
     return;
   }
 
@@ -892,11 +876,11 @@ function renderProofLedger() {
         <div class="proof-assets">
           <div class="proof-asset">
             <strong>Registry</strong>
-            <span>${escapeHtml(proof.registryAddress || "missing")}</span>
+            <span>${escapeHtml(shortenMiddle(proof.registryAddress || "missing", 8, 6))}</span>
           </div>
           <div class="proof-asset">
             <strong>Receipt</strong>
-            <span>${escapeHtml(proof.receiptAddress || "missing")}</span>
+            <span>${escapeHtml(shortenMiddle(proof.receiptAddress || "missing", 8, 6))}</span>
           </div>
           ${deploymentTxs.join("")}
         </div>
@@ -912,15 +896,15 @@ function renderProofLedger() {
         <strong>Proof contracts</strong>
         <span>${escapeHtml(proof.ready ? "ready for writes" : "addresses pending")}</span>
       </div>
-      <div class="proof-assets">
-        <div class="proof-asset">
-          <strong>Registry</strong>
-          <span>${escapeHtml(proof.registryAddress || "missing")}</span>
-        </div>
-        <div class="proof-asset">
-          <strong>Receipt</strong>
-          <span>${escapeHtml(proof.receiptAddress || "missing")}</span>
-        </div>
+        <div class="proof-assets">
+          <div class="proof-asset">
+            <strong>Registry</strong>
+            <span>${escapeHtml(shortenMiddle(proof.registryAddress || "missing", 8, 6))}</span>
+          </div>
+          <div class="proof-asset">
+            <strong>Receipt</strong>
+            <span>${escapeHtml(shortenMiddle(proof.receiptAddress || "missing", 8, 6))}</span>
+          </div>
         ${
           proof.deployment?.registry?.tx?.txHash
             ? `
@@ -955,11 +939,11 @@ function renderProofLedger() {
             <div class="proof-assets">
               <div class="proof-asset">
                 <strong>Wallet</strong>
-                <span>${escapeHtml(entry.wallet || "missing")}</span>
+                <span>${escapeHtml(shortenMiddle(entry.wallet || "missing", 8, 6))}</span>
               </div>
               <div class="proof-asset">
                 <strong>Tx</strong>
-                <span>${escapeHtml(entry.tx?.txHash || entry.tx?.hash || "pending")}</span>
+                <span>${escapeHtml(shortenMiddle(entry.tx?.txHash || entry.tx?.hash || "pending", 8, 6))}</span>
               </div>
             </div>
           </article>
@@ -978,7 +962,7 @@ function renderProofLedger() {
             <div class="proof-assets">
               <div class="proof-asset">
                 <strong>Proof hash</strong>
-                <span>${escapeHtml(entry.proofTaskHash || "missing")}</span>
+                <span>${escapeHtml(shortenMiddle(entry.proofTaskHash || "missing", 10, 8))}</span>
               </div>
               <div class="proof-asset">
                 <strong>Outputs</strong>
@@ -997,11 +981,14 @@ function renderPurchaseToolbar() {
   purchaseStatus.className = `purchase-status ${state.purchaseBusy ? "is-busy" : ""}`;
   livePurchaseButtons.forEach((button) => {
     button.disabled = state.purchaseBusy;
-    button.textContent = state.purchaseBusy ? "Submitting..." : button.dataset.liveWorker === "codeReviewer"
-      ? "Hire CodeReviewer"
-      : button.dataset.liveWorker === "translator"
-        ? "Hire Translator"
-        : "Hire Summarizer";
+    const workerId = button.dataset.worker;
+    button.textContent = state.purchaseBusy
+      ? "Submitting..."
+      : workerId === "codeReviewer"
+        ? "Hire Code Reviewer"
+        : workerId === "translator"
+          ? "Hire Translator"
+          : "Hire Summarizer";
   });
 }
 
@@ -1067,7 +1054,7 @@ async function loadLiveSummary() {
 async function triggerLivePurchase(workerId) {
   const worker = state.agents.find((agent) => agent.id === workerId);
   state.purchaseBusy = true;
-  state.purchaseStatus = `Submitting a live x402 purchase for ${worker?.name || workerId}...`;
+  state.purchaseStatus = `Submitting ${worker?.name || workerId}...`;
   renderAll();
 
   try {
@@ -1085,7 +1072,7 @@ async function triggerLivePurchase(workerId) {
     state.fundingLedger = payload.live?.fundingLedger || state.fundingLedger;
     state.proof = payload.live?.proof || state.proof;
     const txHash = payload.record?.settle?.[0]?.txHash || "pending proof";
-    state.purchaseStatus = `${payload.record?.workerName || workerId} settled successfully on X Layer: ${txHash}`;
+    state.purchaseStatus = `${payload.record?.workerName || workerId} settled: ${txHash}`;
   } catch (error) {
     state.purchaseStatus = `Live purchase failed: ${error.message}`;
   } finally {

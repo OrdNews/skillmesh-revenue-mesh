@@ -29,7 +29,6 @@ Immediate external blockers now are:
 1. push the latest local commits to GitHub
 2. replace all remaining public placeholders
 3. publish Moltbook and X
-4. record and link the final demo
 
 ## What Is Already Strong
 
@@ -97,7 +96,6 @@ The public repo is now live:
 What still needs to be completed inside the repo surface:
 
 - push the latest local commits to `origin/main`
-- demo video link
 - Moltbook post link
 - X post link
 
@@ -107,11 +105,11 @@ Current repo-state blocker:
 
 Current placeholder blocker set:
 
-- `README.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
-- `MOLTBOOK_POST.md`: `<<DEMO_URL>>`, `<<X_POST_URL>>`
-- `X_POST.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`
-- `FORM_TEMPLATE.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
-- `PUBLIC_LINKS.md`: `<<DEMO_URL>>`, `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
+- `README.md`: `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
+- `MOLTBOOK_POST.md`: `<<X_POST_URL>>`
+- `X_POST.md`: `<<MOLTBOOK_URL>>`
+- `FORM_TEMPLATE.md`: `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
+- `PUBLIC_LINKS.md`: `<<MOLTBOOK_URL>>`, `<<X_POST_URL>>`
 
 ### 2. Moltbook post is not yet published
 
@@ -123,13 +121,7 @@ This matters for:
 - event participation
 - potential `Most Popular` upside
 
-### 3. Demo script is not yet locked
-
-Blocker.
-
-The product is rich enough now that an unfocused demo could waste the strongest material.
-
-### 4. Submission form answers are not yet finalized
+### 3. Submission form answers are not yet finalized
 
 Blocker.
 
@@ -181,5 +173,4 @@ Do not publish externally until these are done:
 2. all remaining placeholders are replaced with real public links
 3. Moltbook post is live
 4. X launch post is live
-5. 90-150 second demo is recorded and public
-6. Google Form answers are finalized with final links only
+5. Google Form answers are finalized with final links only

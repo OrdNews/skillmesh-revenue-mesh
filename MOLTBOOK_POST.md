@@ -66,7 +66,6 @@ Canonical proof:
 Links:
 
 - GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
-- Demo video: `<<DEMO_URL>>`
 - X post: `<<X_POST_URL>>`
 
 We think the next generation of onchain products will not just be agent tools.

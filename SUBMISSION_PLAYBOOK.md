@@ -36,24 +36,7 @@ Then fill:
 - GitHub URL in `FORM_TEMPLATE.md`
 - GitHub URL in `README.md`
 
-### Step 2. Capture the final demo
-
-Use:
-
-- `DEMO_SCRIPT.md`
-
-Output:
-
-- one `90-130 second` demo video
-
-Then fill:
-
-- Demo video URL in `README.md`
-- Demo video URL in `MOLTBOOK_POST.md`
-- Demo video URL in `X_POST.md`
-- Demo video URL in `FORM_TEMPLATE.md`
-
-### Step 3. Publish Moltbook
+### Step 2. Publish Moltbook
 
 Use:
 
@@ -65,7 +48,7 @@ Then fill:
 - Moltbook URL in `X_POST.md`
 - Moltbook URL in `FORM_TEMPLATE.md`
 
-### Step 4. Publish X
+### Step 3. Publish X
 
 Use:
 
@@ -77,7 +60,7 @@ Then fill:
 - X post URL in `MOLTBOOK_POST.md`
 - X post URL in `FORM_TEMPLATE.md`
 
-### Step 5. Submit the Google Form
+### Step 4. Submit the Google Form
 
 Use:
 
@@ -86,11 +69,10 @@ Use:
 Only submit when:
 
 - GitHub is public
-- demo video works without login friction
 - Moltbook link is live
 - X link is live
 
-### Step 6. Freeze the public surface
+### Step 5. Freeze the public surface
 
 Do one last pass across:
 

@@ -57,7 +57,6 @@ Pin this order in the repo landing page:
 1. project name
 2. one-line pitch
 3. proof contracts and canonical txs
-4. demo video link
-5. Moltbook link
-6. X post link
-7. quick explanation of `Scout -> route -> pay -> prove`
+4. Moltbook link
+5. X post link
+6. quick explanation of `Scout -> route -> pay -> prove`

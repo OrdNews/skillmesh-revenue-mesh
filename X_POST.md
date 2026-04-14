@@ -21,7 +21,6 @@ This is not a generic task bot or a pure trading bot.
 It is an onchain organization that can hold budget, decide whether a treasury lane is worth opening, buy specialist intelligence, and leave proof onchain.
 
 GitHub: `https://github.com/OrdNews/skillmesh-revenue-mesh`
-Demo: `<<DEMO_URL>>`
 Moltbook: `<<MOLTBOOK_URL>>`
 
 ## Thread Post 2
@@ -68,4 +67,4 @@ That is the future we wanted to prototype with SkillMesh Revenue Mesh.
 4. How `Scout`, `Trader`, and `Treasury` interact
 5. Why `x402` matters for machine-to-machine spending
 6. Why `X Layer` is a strong home for this pattern
-7. Links to GitHub, demo, and proof
+7. Links to GitHub, Moltbook, and proof

@@ -117,7 +117,7 @@ Canonical organization address:
 - [ ] Repo is public
 - [ ] README headline is strong in the first screen
 - [ ] README explains what the project is in 15 seconds
-- [ ] README links contracts, txs, demo video, Moltbook, and X post
+- [ ] README links contracts, txs, Moltbook, and X post
 - [ ] README quick start is accurate
 - [ ] README includes track choice and ecosystem fit
 - [ ] README includes the exact proof addresses and one canonical task artifact
@@ -138,20 +138,10 @@ Canonical organization address:
 - [ ] The post names OKX, X Layer, Onchain OS, and Uniswap appropriately
 - [ ] The post is consistent with the README and Moltbook wording
 
-### 11. Demo Video
-
-- [ ] 90-150 second script is locked
-- [ ] Every click is rehearsed
-- [ ] Backup tabs are pre-opened
-- [ ] Explorer pages are ready
-- [ ] The narration never claims something the product does not prove
-- [ ] The ending shows the long-term vision clearly
-
-### 12. Submission Form
+### 11. Submission Form
 
 - [ ] Google Form is filled with final links only
 - [ ] Agentic Wallet Address is the correct canonical wallet
-- [ ] Demo video link works without extra permissions
 - [ ] GitHub repo link is public
 - [ ] X link is correct
 - [ ] Moltbook link is correct
@@ -186,8 +176,7 @@ Do not launch externally if any of these are true:
 5. Publish GitHub
 6. Publish Moltbook
 7. Publish X post
-8. Record demo
-9. Submit Google Form
+8. Submit Google Form
 
 ## Go / No-Go
 
